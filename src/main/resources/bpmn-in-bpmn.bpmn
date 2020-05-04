@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0hf2wgr" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.6.0">
+  <bpmn:process id="bpmn-in-bpmn" name="bpmn-in-bpmn" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>SequenceFlow_1lxempl</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1lxempl" sourceRef="StartEvent_1" targetRef="bpmn-bpmn-task1" />
+    <bpmn:sequenceFlow id="SequenceFlow_1box3kq" sourceRef="bpmn-bpmn-task1" targetRef="nested-bpmn" />
+    <bpmn:sequenceFlow id="SequenceFlow_1gdxxdp" sourceRef="nested-bpmn" targetRef="bpmn-bpmn-lasttask" />
+    <bpmn:endEvent id="EndEvent_02o2utz">
+      <bpmn:incoming>SequenceFlow_16hsujl</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_16hsujl" sourceRef="bpmn-bpmn-lasttask" targetRef="EndEvent_02o2utz" />
+    <bpmn:userTask id="bpmn-bpmn-task1" name="bpmn-bpmn-task1">
+      <bpmn:incoming>SequenceFlow_1lxempl</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1box3kq</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="bpmn-bpmn-lasttask" name="bpmn-bpmn-lasttask">
+      <bpmn:incoming>SequenceFlow_1gdxxdp</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_16hsujl</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:callActivity id="nested-bpmn" name="nested-bpmn" calledElement="dmn-in-bpmn-sample">
+      <bpmn:incoming>SequenceFlow_1box3kq</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1gdxxdp</bpmn:outgoing>
+    </bpmn:callActivity>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="bpmn-in-bpmn">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1lxempl_di" bpmnElement="SequenceFlow_1lxempl">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1box3kq_di" bpmnElement="SequenceFlow_1box3kq">
+        <di:waypoint x="370" y="117" />
+        <di:waypoint x="430" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1gdxxdp_di" bpmnElement="SequenceFlow_1gdxxdp">
+        <di:waypoint x="530" y="117" />
+        <di:waypoint x="590" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_02o2utz_di" bpmnElement="EndEvent_02o2utz">
+        <dc:Bounds x="752" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_16hsujl_di" bpmnElement="SequenceFlow_16hsujl">
+        <di:waypoint x="690" y="117" />
+        <di:waypoint x="752" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="UserTask_1jysg3w_di" bpmnElement="bpmn-bpmn-task1">
+        <dc:Bounds x="270" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_1vz3lwr_di" bpmnElement="bpmn-bpmn-lasttask">
+        <dc:Bounds x="590" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="CallActivity_1yy6m6g_di" bpmnElement="nested-bpmn">
+        <dc:Bounds x="430" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
