@@ -34,8 +34,6 @@
         </dependency>
 
 
-
-
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -45,7 +43,6 @@
             <artifactId>jaxb-impl</artifactId>
             <version>2.2.3</version>
         </dependency>
-
 
 
         <!--        //for accessing camunda api's-->
@@ -79,28 +76,35 @@
 
         <!--for email-->
         <!-- https://mvnrepository.com/artifact/org.camunda.connect/camunda-connect-core -->
-        <!--        <dependency>-->
-        <!--            <groupId>org.camunda.connect</groupId>-->
-        <!--            <artifactId>camunda-connect-core</artifactId>-->
-        <!--            <version>1.0.3</version>-->
-        <!--        </dependency>-->
-        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/com.sun.mail/javax.mail &ndash;&gt;-->
-        <!--        <dependency>-->
-        <!--            <groupId>com.sun.mail</groupId>-->
-        <!--            <artifactId>javax.mail</artifactId>-->
-        <!--            <version>1.5.5</version>-->
-        <!--        </dependency>-->
-        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.slf4j/slf4j-api &ndash;&gt;-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.slf4j</groupId>-->
-        <!--            <artifactId>slf4j-api</artifactId>-->
-        <!--            <version>1.7.21</version>-->
-        <!--        </dependency>-->
+        <!--                <dependency>-->
+        <!--                    <groupId>org.camunda.connect</groupId>-->
+        <!--                    <artifactId>camunda-connect-core</artifactId>-->
+        <!--                    <version>1.0.3</version>-->
+        <!--                </dependency>-->
+        <!--                &lt;!&ndash; https://mvnrepository.com/artifact/com.sun.mail/javax.mail &ndash;&gt;-->
+        <!--                <dependency>-->
+        <!--                    <groupId>com.sun.mail</groupId>-->
+        <!--                    <artifactId>javax.mail</artifactId>-->
+        <!--                    <version>1.5.5</version>-->
+        <!--                </dependency>-->
+        <!--                &lt;!&ndash; https://mvnrepository.com/artifact/org.slf4j/slf4j-api &ndash;&gt;-->
+        <!--                <dependency>-->
+        <!--                    <groupId>org.slf4j</groupId>-->
+        <!--                    <artifactId>slf4j-api</artifactId>-->
+        <!--                    <version>1.7.21</version>-->
+        <!--                </dependency>-->
 
         <dependency>
             <groupId>org.camunda.bpm.extension</groupId>
             <artifactId>camunda-bpm-mail-core</artifactId>
             <version>1.2.0</version>
+        </dependency>
+
+        <!--        for embedded forms-->
+        <dependency>
+            <groupId>org.camunda.bpm.springboot</groupId>
+            <artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
+            <version>7.13.0</version>
         </dependency>
 
         <!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.camunda.commons/camunda-commons-utils &ndash;&gt;-->

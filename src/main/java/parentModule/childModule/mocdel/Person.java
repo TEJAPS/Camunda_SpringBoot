@@ -2,6 +2,11 @@ package parentModule.childModule.mocdel;
 
 
 public class Person {
+    public Person(String name, String gender) {
+        this.name = name;
+        this.gender = gender;
+    }
+
     public String getName() {
         return name;
     }
