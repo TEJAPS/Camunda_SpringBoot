@@ -18,14 +18,14 @@ public class SampleController {
     }
 
     @RequestMapping(value = "/msgeventstart", method = RequestMethod.POST)
-    public void persistPerson(@RequestBody Person obj) {
-        camundaStartService.startProcessByMessage(obj);
+    public void persistPerson(@RequestBody Person obj) throws Exception {
+        camundaStartService.startProcessByMessage2(obj);
     }
 
-    @RequestMapping(value = "/msgs2", method = RequestMethod.POST)
-    public void msgs2(@RequestBody String name) {
-        camundaStartService.startProcessByMessage2(name);
-    }
+//    @RequestMapping(value = "/msgs2", method = RequestMethod.POST)
+//    public void msgs2(@RequestBody String name) {
+//        camundaStartService.startProcessByMessage2(name);
+//    }
 
     @RequestMapping(value = "/getconnector/{name}", method = RequestMethod.GET)
     public int getConnector(@PathVariable String name) {
@@ -34,6 +34,6 @@ public class SampleController {
 
     @RequestMapping(value = "/postconnector", method = RequestMethod.POST)
     public int msgs2(@RequestBody Summers summers) {
-        return summers.getNum1() + summers.getNum2() + summers.getNum3() + summers.getNum4(); 
+        return summers.getNum1() + summers.getNum2() + summers.getNum3() + summers.getNum4();
     }
 }
