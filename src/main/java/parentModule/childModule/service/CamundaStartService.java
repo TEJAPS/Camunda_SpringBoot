@@ -17,7 +17,9 @@ public class CamundaStartService {
                 .correlate();
     }
 
-    public void startProcessByMessage2(String name) {
+    public void startProcessByMessage2(Person person) {
+        String name = person.getName();
+        String gender = person.getGender();
         runtimeService.createMessageCorrelation("msg-s-2")
                 .setVariable("name", name)
                 .correlate();
