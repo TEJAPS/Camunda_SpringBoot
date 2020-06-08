@@ -30,6 +30,8 @@
           <camunda:formField id="num3" label="num3" type="long" />
           <camunda:formField id="num4" label="num4" type="long" />
           <camunda:formField id="namelength" label="namelength" type="string" />
+          <camunda:formField id="serializedMethod" type="string" defaultValue="${customSerialized.getGender()}" />
+          <camunda:formField id="customJson" label="customJson" type="string" />
         </camunda:formData>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_0le0egt</bpmn:incoming>
@@ -46,7 +48,6 @@
 "num2":${num2},
 "num3":${num3},
 "num4":${num4}
-
 }</camunda:inputParameter>
             <camunda:inputParameter name="headers">
               <camunda:map>
@@ -90,7 +91,9 @@
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="connector-sample">
       <bpmndi:BPMNEdge id="SequenceFlow_0yeim63_di" bpmnElement="SequenceFlow_0yeim63">
-        <di:waypoint x="215" y="117" />
+        <di:waypoint x="215" y="119" />
+        <di:waypoint x="243" y="119" />
+        <di:waypoint x="243" y="117" />
         <di:waypoint x="270" y="117" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_0le0egt_di" bpmnElement="SequenceFlow_0le0egt">
@@ -121,7 +124,7 @@
         <dc:Bounds x="750" y="77" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="StartEvent_1nsek2m_di" bpmnElement="StartEvent_1">
-        <dc:Bounds x="179" y="99" width="36" height="36" />
+        <dc:Bounds x="179" y="101" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_0rg5c5y_di" bpmnElement="SequenceFlow_0rg5c5y">
         <di:waypoint x="530" y="117" />
