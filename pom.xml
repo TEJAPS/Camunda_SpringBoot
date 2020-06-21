@@ -68,11 +68,11 @@
             <artifactId>camunda-engine-plugin-connect</artifactId>
             <version>7.12.0</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.camunda.bpm</groupId>-->
-<!--            <artifactId>camunda-engine-plugin-spin</artifactId>-->
-<!--            <version>7.12.0</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.camunda.bpm</groupId>-->
+        <!--            <artifactId>camunda-engine-plugin-spin</artifactId>-->
+        <!--            <version>7.12.0</version>-->
+        <!--        </dependency>-->
 
         <!--Spin-->
         <dependency>
@@ -105,13 +105,19 @@
         </dependency>
 
         <!--        for embedded forms-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.camunda.bpm.springboot</groupId>-->
+        <!--            <artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>-->
+        <!--            <version>7.13.0</version>-->
+        <!--        </dependency>-->
+
+        <!--        email from simpleEmail-->
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email -->
         <dependency>
-            <groupId>org.camunda.bpm.springboot</groupId>
-            <artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
-            <version>7.13.0</version>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-email</artifactId>
+            <version>1.5</version>
         </dependency>
-
-
     </dependencies>
 
     <build>
