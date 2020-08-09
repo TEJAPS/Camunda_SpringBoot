@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="Definitions_05cggu9" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="3.6.0">
+  <decision id="number-nature" name="number-nature">
+    <decisionTable id="decisionTable_1">
+      <input id="input_1" label="input1" camunda:inputVariable="input1">
+        <inputExpression id="inputExpression_1" typeRef="integer">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="output_1" label="nature" name="nature" typeRef="string" />
+      <rule id="DecisionRule_0qv8woc">
+        <inputEntry id="UnaryTests_0lq9zy3">
+          <text>0</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0of1p6k">
+          <text>"zero"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1tyn40r">
+        <inputEntry id="UnaryTests_1wg54h9">
+          <text>&gt;0</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0rrt0m6">
+          <text>"positive"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1svnbge">
+        <inputEntry id="UnaryTests_1c5xc3t">
+          <text>&lt;0</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1t6egbe">
+          <text>"negative"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>
