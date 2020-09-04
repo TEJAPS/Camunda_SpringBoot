@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1um6146" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.6.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1um6146" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.1.1">
   <bpmn:process id="connector-sample" name="connector-sample" isExecutable="true">
     <bpmn:sequenceFlow id="SequenceFlow_0yeim63" sourceRef="StartEvent_1" targetRef="stask1" />
     <bpmn:sequenceFlow id="SequenceFlow_0le0egt" sourceRef="stask1" targetRef="utask" />
@@ -90,27 +90,35 @@
   <bpmn:message id="Message_1ja63df" name="msg-s-2" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="connector-sample">
-      <bpmndi:BPMNEdge id="SequenceFlow_0yeim63_di" bpmnElement="SequenceFlow_0yeim63">
-        <di:waypoint x="215" y="119" />
-        <di:waypoint x="243" y="119" />
-        <di:waypoint x="243" y="117" />
-        <di:waypoint x="270" y="117" />
+      <bpmndi:BPMNEdge id="SequenceFlow_1c73pu8_di" bpmnElement="SequenceFlow_1c73pu8">
+        <di:waypoint x="640" y="190" />
+        <di:waypoint x="640" y="157" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SequenceFlow_0le0egt_di" bpmnElement="SequenceFlow_0le0egt">
-        <di:waypoint x="370" y="117" />
-        <di:waypoint x="430" y="117" />
+      <bpmndi:BPMNEdge id="SequenceFlow_0rg5c5y_di" bpmnElement="SequenceFlow_0rg5c5y">
+        <di:waypoint x="530" y="117" />
+        <di:waypoint x="560" y="117" />
+        <di:waypoint x="560" y="230" />
+        <di:waypoint x="590" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_17lr2fq_di" bpmnElement="SequenceFlow_17lr2fq">
+        <di:waypoint x="850" y="117" />
+        <di:waypoint x="912" y="117" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_129q50w_di" bpmnElement="SequenceFlow_129q50w">
         <di:waypoint x="690" y="117" />
         <di:waypoint x="750" y="117" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0le0egt_di" bpmnElement="SequenceFlow_0le0egt">
+        <di:waypoint x="370" y="117" />
+        <di:waypoint x="430" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0yeim63_di" bpmnElement="SequenceFlow_0yeim63">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="EndEvent_0e3eein_di" bpmnElement="EndEvent_0e3eein">
         <dc:Bounds x="912" y="99" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_17lr2fq_di" bpmnElement="SequenceFlow_17lr2fq">
-        <di:waypoint x="850" y="117" />
-        <di:waypoint x="912" y="117" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ServiceTask_1jhhpy0_di" bpmnElement="stask1">
         <dc:Bounds x="270" y="77" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -123,21 +131,11 @@
       <bpmndi:BPMNShape id="UserTask_1k8jmc9_di" bpmnElement="utask2">
         <dc:Bounds x="750" y="77" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="StartEvent_1nsek2m_di" bpmnElement="StartEvent_1">
-        <dc:Bounds x="179" y="101" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_0rg5c5y_di" bpmnElement="SequenceFlow_0rg5c5y">
-        <di:waypoint x="530" y="117" />
-        <di:waypoint x="560" y="117" />
-        <di:waypoint x="560" y="230" />
-        <di:waypoint x="590" y="230" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SequenceFlow_1c73pu8_di" bpmnElement="SequenceFlow_1c73pu8">
-        <di:waypoint x="640" y="190" />
-        <di:waypoint x="640" y="157" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="UserTask_0stfzdh_di" bpmnElement="embeddedForm">
         <dc:Bounds x="590" y="190" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_1nsek2m_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

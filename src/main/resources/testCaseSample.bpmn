@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_18sy5j9" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.1.1">
+  <bpmn:process id="testCaseSample" name="testCaseSample" isExecutable="true">
+    <bpmn:startEvent id="startEvent" name="startEvent">
+      <bpmn:outgoing>Flow_0qrog8t</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0qrog8t" sourceRef="startEvent" targetRef="userTask1" />
+    <bpmn:sequenceFlow id="Flow_1n2ciq5" sourceRef="userTask1" targetRef="serviceTask1" />
+    <bpmn:sequenceFlow id="Flow_0h7g8xn" sourceRef="serviceTask1" targetRef="userTask2" />
+    <bpmn:endEvent id="endEvent" name="endEvent">
+      <bpmn:incoming>Flow_0bvyy5x</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0bvyy5x" sourceRef="userTask2" targetRef="endEvent" />
+    <bpmn:userTask id="userTask1" name="userTask1">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="attribute1" label="attribute1" type="string" />
+          <camunda:formField id="assignPerson" label="assignPerson" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0qrog8t</bpmn:incoming>
+      <bpmn:outgoing>Flow_1n2ciq5</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="serviceTask1" name="serviceTask1" camunda:expression="${1==1}">
+      <bpmn:incoming>Flow_1n2ciq5</bpmn:incoming>
+      <bpmn:outgoing>Flow_0h7g8xn</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="userTask2" name="userTask2" camunda:assignee="${assignPerson}">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="attribute2" label="attribute2" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0h7g8xn</bpmn:incoming>
+      <bpmn:outgoing>Flow_0bvyy5x</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="testCaseSample">
+      <bpmndi:BPMNEdge id="Flow_0qrog8t_di" bpmnElement="Flow_0qrog8t">
+        <di:waypoint x="188" y="120" />
+        <di:waypoint x="240" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1n2ciq5_di" bpmnElement="Flow_1n2ciq5">
+        <di:waypoint x="340" y="120" />
+        <di:waypoint x="400" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0h7g8xn_di" bpmnElement="Flow_0h7g8xn">
+        <di:waypoint x="500" y="120" />
+        <di:waypoint x="560" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0bvyy5x_di" bpmnElement="Flow_0bvyy5x">
+        <di:waypoint x="660" y="120" />
+        <di:waypoint x="722" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="startEvent">
+        <dc:Bounds x="152" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="145" y="145" width="51" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0bxdzdd_di" bpmnElement="endEvent">
+        <dc:Bounds x="722" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="716" y="145" width="48" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0qwpotb_di" bpmnElement="userTask1">
+        <dc:Bounds x="240" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_06u4o7k_di" bpmnElement="serviceTask1">
+        <dc:Bounds x="400" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1x7o6df_di" bpmnElement="userTask2">
+        <dc:Bounds x="560" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

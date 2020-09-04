@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_0e0r9n9" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.6.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_0e0r9n9" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.1.1">
   <bpmn:process id="assignmentAndSendMail" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>SequenceFlow_16wx5hd</bpmn:outgoing>
@@ -15,7 +15,7 @@
         <camunda:formData>
           <camunda:formField id="attribute1" label="attribute1" type="string" />
         </camunda:formData>
-        <camunda:taskListener class="parentModule.childModule.delegates.TaskAssignmentListener" event="assignment" />
+        <camunda:taskListener class="TaskAssignmentListener" event="assignment" />
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_16wx5hd</bpmn:incoming>
       <bpmn:incoming>SequenceFlow_1dfv2pi</bpmn:incoming>
@@ -26,7 +26,7 @@
         <camunda:formData>
           <camunda:formField id="attribute1" label="attribute1" type="string" />
         </camunda:formData>
-        <camunda:taskListener class="parentModule.childModule.delegates.TaskAssignmentListener" event="assignment" />
+        <camunda:taskListener class="com.dpoint.tutorial.delegates.TaskAssignmentListener" event="assignment" />
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_08fcw9z</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1bjqwqh</bpmn:outgoing>
@@ -41,24 +41,30 @@
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="assignmentAndSendMail">
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="179" y="102" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_16wx5hd_di" bpmnElement="SequenceFlow_16wx5hd">
-        <di:waypoint x="215" y="120" />
-        <di:waypoint x="270" y="120" />
+      <bpmndi:BPMNEdge id="SequenceFlow_1dfv2pi_di" bpmnElement="SequenceFlow_1dfv2pi">
+        <di:waypoint x="530" y="178" />
+        <di:waypoint x="530" y="198" />
+        <di:waypoint x="320" y="198" />
+        <di:waypoint x="320" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1bjqwqh_di" bpmnElement="SequenceFlow_1bjqwqh">
+        <di:waypoint x="610" y="120" />
+        <di:waypoint x="752" y="120" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_08fcw9z_di" bpmnElement="SequenceFlow_08fcw9z">
         <di:waypoint x="370" y="120" />
         <di:waypoint x="510" y="120" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_16wx5hd_di" bpmnElement="SequenceFlow_16wx5hd">
+        <di:waypoint x="215" y="120" />
+        <di:waypoint x="270" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_1tmu3nh_di" bpmnElement="EndEvent_1tmu3nh">
         <dc:Bounds x="752" y="102" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_1bjqwqh_di" bpmnElement="SequenceFlow_1bjqwqh">
-        <di:waypoint x="610" y="120" />
-        <di:waypoint x="752" y="120" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="UserTask_1fd54vi_di" bpmnElement="firstTask">
         <dc:Bounds x="270" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -68,12 +74,6 @@
       <bpmndi:BPMNShape id="BoundaryEvent_1ampp8b_di" bpmnElement="IntermediateThrowEvent_1vl4rkm">
         <dc:Bounds x="512" y="142" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_1dfv2pi_di" bpmnElement="SequenceFlow_1dfv2pi">
-        <di:waypoint x="530" y="178" />
-        <di:waypoint x="530" y="198" />
-        <di:waypoint x="320" y="198" />
-        <di:waypoint x="320" y="160" />
-      </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
