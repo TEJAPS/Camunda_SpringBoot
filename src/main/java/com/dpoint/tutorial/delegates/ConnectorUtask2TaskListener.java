@@ -1,4 +1,4 @@
-package parentModule.childModule.delegates;
+package com.dpoint.tutorial.delegates;
 
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.delegate.DelegateExecution;

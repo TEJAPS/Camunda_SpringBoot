@@ -1,62 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0e0r9n9" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.1.1">
-  <bpmn:process id="email-trials" name="email-trials" isExecutable="true">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_0e0r9n9" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.1.1">
+  <bpmn:process id="assignmentAndSendMail" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>SequenceFlow_16wx5hd</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="SequenceFlow_16wx5hd" sourceRef="StartEvent_1" targetRef="firstTask" />
-    <bpmn:sequenceFlow id="SequenceFlow_08fcw9z" sourceRef="firstTask" targetRef="Task_1wesy3d" />
-    <bpmn:sequenceFlow id="SequenceFlow_1g30hku" sourceRef="Task_1wesy3d" targetRef="secondTask" />
+    <bpmn:sequenceFlow id="SequenceFlow_08fcw9z" sourceRef="firstTask" targetRef="secondTask" />
     <bpmn:endEvent id="EndEvent_1tmu3nh">
       <bpmn:incoming>SequenceFlow_1bjqwqh</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="SequenceFlow_1bjqwqh" sourceRef="secondTask" targetRef="EndEvent_1tmu3nh" />
-    <bpmn:userTask id="firstTask" name="firstTask">
+    <bpmn:userTask id="firstTask" name="firstTask" camunda:assignee="teja143">
       <bpmn:extensionElements>
         <camunda:formData>
           <camunda:formField id="attribute1" label="attribute1" type="string" />
         </camunda:formData>
+        <camunda:taskListener class="TaskAssignmentListener" event="assignment" />
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_16wx5hd</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1dfv2pi</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_08fcw9z</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="secondTask" name="secondTask">
+    <bpmn:userTask id="secondTask" name="secondTask" camunda:assignee="tejas47">
       <bpmn:extensionElements>
         <camunda:formData>
           <camunda:formField id="attribute1" label="attribute1" type="string" />
         </camunda:formData>
-      </bpmn:extensionElements>
-      <bpmn:incoming>SequenceFlow_1g30hku</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1bjqwqh</bpmn:outgoing>
-    </bpmn:userTask>
-    <bpmn:serviceTask id="Task_1wesy3d" name="send mail">
-      <bpmn:extensionElements>
-        <camunda:connector>
-          <camunda:inputOutput>
-            <camunda:inputParameter name="to">tejapolisettys47@gmail.com</camunda:inputParameter>
-            <camunda:inputParameter name="subject">Confirmation</camunda:inputParameter>
-            <camunda:inputParameter name="text">pizza on the way</camunda:inputParameter>
-          </camunda:inputOutput>
-          <camunda:connectorId>mail-send</camunda:connectorId>
-        </camunda:connector>
+        <camunda:taskListener class="com.dpoint.tutorial.delegates.TaskAssignmentListener" event="assignment" />
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_08fcw9z</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1g30hku</bpmn:outgoing>
-    </bpmn:serviceTask>
+      <bpmn:outgoing>SequenceFlow_1bjqwqh</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:boundaryEvent id="IntermediateThrowEvent_1vl4rkm" attachedToRef="secondTask">
+      <bpmn:outgoing>SequenceFlow_1dfv2pi</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_0npsrv5">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT1M</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1dfv2pi" sourceRef="IntermediateThrowEvent_1vl4rkm" targetRef="firstTask" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="email-trials">
-      <bpmndi:BPMNEdge id="SequenceFlow_1bjqwqh_di" bpmnElement="SequenceFlow_1bjqwqh">
-        <di:waypoint x="690" y="120" />
-        <di:waypoint x="752" y="120" />
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="assignmentAndSendMail">
+      <bpmndi:BPMNEdge id="SequenceFlow_1dfv2pi_di" bpmnElement="SequenceFlow_1dfv2pi">
+        <di:waypoint x="530" y="178" />
+        <di:waypoint x="530" y="198" />
+        <di:waypoint x="320" y="198" />
+        <di:waypoint x="320" y="160" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SequenceFlow_1g30hku_di" bpmnElement="SequenceFlow_1g30hku">
-        <di:waypoint x="530" y="120" />
-        <di:waypoint x="590" y="120" />
+      <bpmndi:BPMNEdge id="SequenceFlow_1bjqwqh_di" bpmnElement="SequenceFlow_1bjqwqh">
+        <di:waypoint x="610" y="120" />
+        <di:waypoint x="752" y="120" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_08fcw9z_di" bpmnElement="SequenceFlow_08fcw9z">
         <di:waypoint x="370" y="120" />
-        <di:waypoint x="430" y="120" />
+        <di:waypoint x="510" y="120" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_16wx5hd_di" bpmnElement="SequenceFlow_16wx5hd">
         <di:waypoint x="215" y="120" />
@@ -72,10 +69,10 @@
         <dc:Bounds x="270" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="UserTask_1nkfuuh_di" bpmnElement="secondTask">
-        <dc:Bounds x="590" y="80" width="100" height="80" />
+        <dc:Bounds x="510" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="ServiceTask_1hfstbp_di" bpmnElement="Task_1wesy3d">
-        <dc:Bounds x="430" y="80" width="100" height="80" />
+      <bpmndi:BPMNShape id="BoundaryEvent_1ampp8b_di" bpmnElement="IntermediateThrowEvent_1vl4rkm">
+        <dc:Bounds x="512" y="142" width="36" height="36" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

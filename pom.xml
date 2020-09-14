@@ -13,6 +13,10 @@
         <spring-boot.version>2.2.1.RELEASE</spring-boot.version>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
+        <version.assertj>3.12.2</version.assertj>
+        <version.bpm-assert>4.0.0</version.bpm-assert>
+        <version.mockito>2.24.5</version.mockito>
+        <version.powermock>2.0.0</version.powermock>
     </properties>
 
     <dependencyManagement>
@@ -26,7 +30,9 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
     <dependencies>
+
         <dependency>
             <groupId>org.camunda.bpm.springboot</groupId>
             <artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
@@ -34,6 +40,8 @@
         </dependency>
 
 
+
+        <!--        in memory database-->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -68,11 +76,6 @@
             <artifactId>camunda-engine-plugin-connect</artifactId>
             <version>7.12.0</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.camunda.bpm</groupId>-->
-<!--            <artifactId>camunda-engine-plugin-spin</artifactId>-->
-<!--            <version>7.12.0</version>-->
-<!--        </dependency>-->
 
         <!--Spin-->
         <dependency>
@@ -96,6 +99,13 @@
             <version>7.12.0</version>
         </dependency>
 
+        <!--        lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.12</version>
+            <scope>provided</scope>
+        </dependency>
 
         <!--for email-->
         <dependency>
@@ -104,13 +114,45 @@
             <version>1.2.0</version>
         </dependency>
 
-        <!--        for embedded forms-->
+
+        <!--        email from simpleEmail-->
         <dependency>
-            <groupId>org.camunda.bpm.springboot</groupId>
-            <artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
-            <version>7.13.0</version>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-email</artifactId>
+            <version>1.5</version>
         </dependency>
 
+        <!--        for testing purpose-->
+        <dependency>
+            <groupId>org.camunda.bpm.extension</groupId>
+            <artifactId>camunda-bpm-process-test-coverage</artifactId>
+            <version>0.3.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.camunda.bpm.assert</groupId>
+            <artifactId>camunda-bpm-assert</artifactId>
+            <version>${version.bpm-assert}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${version.assertj}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-module-junit4</artifactId>
+            <version>${version.powermock}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${version.mockito}</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 
@@ -119,6 +161,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.2.6.RELEASE</version>
                 <configuration>
                     <layout>ZIP</layout>
                 </configuration>

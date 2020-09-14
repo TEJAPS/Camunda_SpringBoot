@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0prjv9m" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.6.0">
+  <bpmn:process id="signalThrowFlow" name="signalThrowFlow" isExecutable="true">
+    <bpmn:sequenceFlow id="SequenceFlow_069asr4" sourceRef="StartEvent_1" targetRef="Task_11zkl5b" />
+    <bpmn:exclusiveGateway id="ExclusiveGateway_19stdq2">
+      <bpmn:incoming>SequenceFlow_1l2o67e</bpmn:incoming>
+      <bpmn:outgoing>udpateTrue</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_0mme3qf</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="udpateTrue" name="update true" sourceRef="ExclusiveGateway_19stdq2" targetRef="IntermediateThrowEvent_0f9k68q">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{approved}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:intermediateThrowEvent id="IntermediateThrowEvent_0f9k68q">
+      <bpmn:incoming>udpateTrue</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0tm9a4f</bpmn:outgoing>
+      <bpmn:signalEventDefinition id="SignalEventDefinition_1l1ovn3" signalRef="Signal_1s2zobg" />
+    </bpmn:intermediateThrowEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1l2o67e" sourceRef="Task_11zkl5b" targetRef="ExclusiveGateway_19stdq2" />
+    <bpmn:endEvent id="EndEvent_1fbbou5">
+      <bpmn:incoming>SequenceFlow_0tm9a4f</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0tm9a4f" sourceRef="IntermediateThrowEvent_0f9k68q" targetRef="EndEvent_1fbbou5" />
+    <bpmn:sequenceFlow id="SequenceFlow_0mme3qf" sourceRef="ExclusiveGateway_19stdq2" targetRef="EndEvent_1rjst4m">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{not approved}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:endEvent id="EndEvent_1rjst4m">
+      <bpmn:incoming>SequenceFlow_0mme3qf</bpmn:incoming>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_03015wo" errorRef="Error_0opo7xb" />
+    </bpmn:endEvent>
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>SequenceFlow_069asr4</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_0z87z7s" messageRef="Message_0bjl8jd" />
+    </bpmn:startEvent>
+    <bpmn:userTask id="Task_11zkl5b" name="approved updated polict">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="approved" label="Approved" type="boolean" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_069asr4</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1l2o67e</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmn:signal id="Signal_1s2zobg" name="policyApproved" />
+  <bpmn:message id="Message_0bjl8jd" name="signalFlowMsgStart" />
+  <bpmn:error id="Error_0opo7xb" name="policyNotApproved" errorCode="policyNotApproved" camunda:errorMessage="policyNotApproved" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="signalThrowFlow">
+      <bpmndi:BPMNEdge id="SequenceFlow_069asr4_di" bpmnElement="SequenceFlow_069asr4">
+        <di:waypoint x="215" y="120" />
+        <di:waypoint x="270" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ExclusiveGateway_19stdq2_di" bpmnElement="ExclusiveGateway_19stdq2" isMarkerVisible="true">
+        <dc:Bounds x="445" y="95" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1gdbgeu_di" bpmnElement="udpateTrue">
+        <di:waypoint x="495" y="120" />
+        <di:waypoint x="552" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="496" y="102" width="56" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="IntermediateThrowEvent_1ndvmcl_di" bpmnElement="IntermediateThrowEvent_0f9k68q">
+        <dc:Bounds x="552" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1l2o67e_di" bpmnElement="SequenceFlow_1l2o67e">
+        <di:waypoint x="370" y="120" />
+        <di:waypoint x="445" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_1fbbou5_di" bpmnElement="EndEvent_1fbbou5">
+        <dc:Bounds x="652" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0tm9a4f_di" bpmnElement="SequenceFlow_0tm9a4f">
+        <di:waypoint x="588" y="120" />
+        <di:waypoint x="652" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0mme3qf_di" bpmnElement="SequenceFlow_0mme3qf">
+        <di:waypoint x="470" y="145" />
+        <di:waypoint x="470" y="230" />
+        <di:waypoint x="632" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_1nkbpov_di" bpmnElement="EndEvent_1rjst4m">
+        <dc:Bounds x="632" y="212" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_0f2bc8h_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_1m6fgae_di" bpmnElement="Task_11zkl5b">
+        <dc:Bounds x="270" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
