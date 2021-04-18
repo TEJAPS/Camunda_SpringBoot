@@ -1,0 +1,12 @@
+{
+  "category1": {
+    "subcat1": {
+      "server": "https://www.youtube.com/c/Dpoint0/playlists",
+      "authorization": "demodemo"
+    }
+  },
+  "category4":{
+	"url":"dpointyt.com",
+	"api_url":"ultimatedragonballz.com/v4/api"
+  }
+}

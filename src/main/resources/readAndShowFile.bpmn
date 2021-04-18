@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_09osz83" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.4.0">
+  <bpmn:error id="Error_0bmzo5g" name="Error_0vo8iko" errorCode="CallTypeNotFound" camunda:errorMessage="Call Type Not Found" />
+  <bpmn:category id="Category_1q42fii">
+    <bpmn:categoryValue id="CategoryValue_1e8797c" value="Reject Candidate" />
+  </bpmn:category>
+  <bpmn:process id="readAndSnowFile" name="readAndSnowFile" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_143jg22</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_143jg22" sourceRef="StartEvent_1" targetRef="readScript" />
+    <bpmn:sequenceFlow id="Flow_0k84knq" sourceRef="readScript" targetRef="Activity_1uab6dl" />
+    <bpmn:endEvent id="Event_01g20dl">
+      <bpmn:incoming>Flow_173c2gr</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_173c2gr" sourceRef="userTaskRead" targetRef="Event_01g20dl" />
+    <bpmn:userTask id="userTaskRead" name="userTaskRead">
+      <bpmn:incoming>Flow_0mds7fx</bpmn:incoming>
+      <bpmn:outgoing>Flow_173c2gr</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:scriptTask id="readScript" name="readScript" scriptFormat="javascript">
+      <bpmn:incoming>Flow_143jg22</bpmn:incoming>
+      <bpmn:outgoing>Flow_0k84knq</bpmn:outgoing>
+      <bpmn:script>/**
+ * Load configuration file as a SPIN JSON variable in-memory and optionally as a process variable.
+ *
+ * @param string fileName The name of the configuration file in the deployment.
+ * @param string key The top level JSON key in the configuration file that will be saved, and other keys/objects are omitted.
+ * @param boolean persist Whether to save the configuration as a process variable.
+ * @return SPIN JSON Object
+ */
+function loadConfig(fileName) {
+  'use strict';
+
+  var processDefinitionId = execution.getProcessDefinitionId();
+  var deploymentId = execution.getProcessEngineServices().getRepositoryService().getProcessDefinition(processDefinitionId).getDeploymentId();
+  var resource = execution.getProcessEngineServices().getRepositoryService().getResourceAsStream(deploymentId, fileName);
+
+  var Scanner = Java.type('java.util.Scanner');
+
+  var scannerResource = new Scanner(resource, 'UTF-8');
+
+  var configText = scannerResource.useDelimiter('\\Z').next();
+  scannerResource.close();
+
+  return configText;
+}
+
+var content = loadConfig('mattermost_initial_thread_content.txt');
+execution.setVariable("content", content);
+</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:sequenceFlow id="Flow_0mds7fx" sourceRef="Activity_1uab6dl" targetRef="userTaskRead" />
+    <bpmn:serviceTask id="Activity_1uab6dl">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="url">https://lgi-dev-mattermost.herokuapp.com/api/v4/posts?access_token=otejkqx9778cj8a7c5bw9gmk6a</camunda:inputParameter>
+            <camunda:inputParameter name="method">POST</camunda:inputParameter>
+            <camunda:inputParameter name="headers">
+              <camunda:map>
+                <camunda:entry key="Content-Type">application/json</camunda:entry>
+                <camunda:entry key="Authorization">Bearer ju5h8tnk6jfbupudz8wjunybph</camunda:entry>
+              </camunda:map>
+            </camunda:inputParameter>
+            <camunda:inputParameter name="payload">{
+  "channel_id": "9rcsrzbq8pfrxeb59bibk8ge7w",
+  "message":"${content}"
+}</camunda:inputParameter>
+            <camunda:outputParameter name="mattermost_response">${response}</camunda:outputParameter>
+          </camunda:inputOutput>
+          <camunda:connectorId>http-connector</camunda:connectorId>
+        </camunda:connector>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0k84knq</bpmn:incoming>
+      <bpmn:outgoing>Flow_0mds7fx</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="readAndSnowFile">
+      <bpmndi:BPMNEdge id="Flow_143jg22_di" bpmnElement="Flow_143jg22">
+        <di:waypoint x="215" y="120" />
+        <di:waypoint x="270" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0k84knq_di" bpmnElement="Flow_0k84knq">
+        <di:waypoint x="370" y="120" />
+        <di:waypoint x="450" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_173c2gr_di" bpmnElement="Flow_173c2gr">
+        <di:waypoint x="790" y="120" />
+        <di:waypoint x="852" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0mds7fx_di" bpmnElement="Flow_0mds7fx">
+        <di:waypoint x="550" y="120" />
+        <di:waypoint x="690" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0vvr89i_di" bpmnElement="readScript">
+        <dc:Bounds x="270" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_01g20dl_di" bpmnElement="Event_01g20dl">
+        <dc:Bounds x="852" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_045wlov_di" bpmnElement="userTaskRead">
+        <dc:Bounds x="690" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_181155z_di" bpmnElement="Activity_1uab6dl">
+        <dc:Bounds x="450" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -12,6 +12,7 @@ public class MsgsampleService1 implements JavaDelegate {
     @Override
     public void execute(DelegateExecution delegateExecution) throws Exception {
         LOGGER.info("executed msgsample service 1 ");
+        delegateExecution.getProcessEngine().getIdentityService().getUserInfoKeys("abcd").isEmpty();
         delegateExecution.setVariable("servicevar", "servicevalue");
     }
 }

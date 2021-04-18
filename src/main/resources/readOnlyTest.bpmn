@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_155dgf0" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.4.0">
+  <bpmn:process id="readOnlytest" name="readOnlytest" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="attribute1" label="attribute1" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>Flow_0eglb41</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0eglb41" sourceRef="StartEvent_1" targetRef="embedded_form" />
+    <bpmn:sequenceFlow id="Flow_1pmh9pg" sourceRef="show_variables_readonly" targetRef="empty_task_final_verify_cockpit" />
+    <bpmn:endEvent id="Event_0o47lqj">
+      <bpmn:incoming>Flow_13xox6z</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_13xox6z" sourceRef="empty_task_final_verify_cockpit" targetRef="Event_0o47lqj" />
+    <bpmn:userTask id="show_variables_readonly" name="show_variables_readonly">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="attribute1" label="attribute1" type="string">
+            <camunda:validation>
+              <camunda:constraint name="readonly" />
+            </camunda:validation>
+          </camunda:formField>
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0upe9nu</bpmn:incoming>
+      <bpmn:outgoing>Flow_1pmh9pg</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="empty_task_final_verify_cockpit" name="empty_task_final_verify_cockpit">
+      <bpmn:incoming>Flow_1pmh9pg</bpmn:incoming>
+      <bpmn:outgoing>Flow_13xox6z</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_1auiv6u" sourceRef="embedded_form" targetRef="embedded_form_variables" />
+    <bpmn:userTask id="embedded_form" name="embedded_form" camunda:formKey="embedded:deployment:enumform.html">
+      <bpmn:incoming>Flow_0eglb41</bpmn:incoming>
+      <bpmn:outgoing>Flow_1auiv6u</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0upe9nu" sourceRef="embedded_form_variables" targetRef="show_variables_readonly" />
+    <bpmn:userTask id="embedded_form_variables" name="embedded_form_variables">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="product_type" label="product_type Any randome variable but variable id should be cam-variable-name" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1auiv6u</bpmn:incoming>
+      <bpmn:outgoing>Flow_0upe9nu</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="readOnlytest">
+      <bpmndi:BPMNEdge id="Flow_1auiv6u_di" bpmnElement="Flow_1auiv6u">
+        <di:waypoint x="360" y="117" />
+        <di:waypoint x="410" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_13xox6z_di" bpmnElement="Flow_13xox6z">
+        <di:waypoint x="860" y="117" />
+        <di:waypoint x="912" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1pmh9pg_di" bpmnElement="Flow_1pmh9pg">
+        <di:waypoint x="680" y="117" />
+        <di:waypoint x="760" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0eglb41_di" bpmnElement="Flow_0eglb41">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="260" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0upe9nu_di" bpmnElement="Flow_0upe9nu">
+        <di:waypoint x="510" y="117" />
+        <di:waypoint x="580" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_07dkn80_di" bpmnElement="embedded_form">
+        <dc:Bounds x="260" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0o47lqj_di" bpmnElement="Event_0o47lqj">
+        <dc:Bounds x="912" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_15try7u_di" bpmnElement="empty_task_final_verify_cockpit">
+        <dc:Bounds x="760" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0z8lzi4_di" bpmnElement="show_variables_readonly">
+        <dc:Bounds x="580" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1otd43y_di" bpmnElement="embedded_form_variables">
+        <dc:Bounds x="410" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

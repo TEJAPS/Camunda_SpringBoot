@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1oklt63" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.5.0">
+  <bpmn:process id="dynamicConfig" name="dynamicConfig" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_06i8x2o</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_06i8x2o" sourceRef="StartEvent_1" targetRef="Activity_05aewdp" />
+    <bpmn:sequenceFlow id="Flow_0hzyqj9" sourceRef="Activity_05aewdp" targetRef="configCheck" />
+    <bpmn:endEvent id="Event_11o1gc8">
+      <bpmn:incoming>Flow_1383h9e</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1383h9e" sourceRef="configCheck" targetRef="Event_11o1gc8" />
+    <bpmn:userTask id="configCheck" name="configCheck" camunda:assignee="demo">
+      <bpmn:incoming>Flow_0hzyqj9</bpmn:incoming>
+      <bpmn:outgoing>Flow_1383h9e</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Activity_05aewdp" name="Activity_05aewdp" camunda:expression="${1==1}">
+      <bpmn:extensionElements>
+        <camunda:executionListener event="start">
+          <camunda:script scriptFormat="javascript">
+function getConfig(fileName,key) {
+
+
+  var processDefinitionId = execution.getProcessDefinitionId();
+  var deploymentId = execution.getProcessEngineServices().getRepositoryService().getProcessDefinition(processDefinitionId).getDeploymentId();
+  var resource = execution.getProcessEngineServices().getRepositoryService().getResourceAsStream(deploymentId, fileName);
+
+  var Scanner = Java.type('java.util.Scanner');
+
+  var scannerResource = new Scanner(resource, 'UTF-8');
+
+  var fileText = scannerResource.useDelimiter('\\Z').next();
+
+  var jsonText = S(fileText);
+
+  var config = jsonText.prop(key);
+
+  return config;
+}
+
+var category1_config = getConfig('config.json', 'category1', true);
+
+execution.setVariable("category1_authorization", S(category1_config).prop("subcat1").prop("authorization").stringValue());
+execution.setVariable("category1_server", S(category1_config).prop("subcat1").prop("server").stringValue());
+  
+var category4_config = getConfig('config.json', 'category4', true);
+execution.setVariable("category4_url",S(category4_config).prop("url").stringValue());
+execution.setVariable("category4_api_url",S(category4_config).prop("api_url").stringValue());
+</camunda:script>
+        </camunda:executionListener>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_06i8x2o</bpmn:incoming>
+      <bpmn:outgoing>Flow_0hzyqj9</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="dynamicConfig">
+      <bpmndi:BPMNEdge id="Flow_06i8x2o_di" bpmnElement="Flow_06i8x2o">
+        <di:waypoint x="215" y="120" />
+        <di:waypoint x="270" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0hzyqj9_di" bpmnElement="Flow_0hzyqj9">
+        <di:waypoint x="370" y="120" />
+        <di:waypoint x="430" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1383h9e_di" bpmnElement="Flow_1383h9e">
+        <di:waypoint x="530" y="120" />
+        <di:waypoint x="592" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_11o1gc8_di" bpmnElement="Event_11o1gc8">
+        <dc:Bounds x="592" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0xdraey_di" bpmnElement="configCheck">
+        <dc:Bounds x="430" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1dumk5h_di" bpmnElement="Activity_05aewdp">
+        <dc:Bounds x="270" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
