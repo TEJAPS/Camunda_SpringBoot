@@ -1,13 +1,13 @@
 package com.dpoint.tutorial.service;
 
-import com.dpoint.tutorial.mocdel.CamundaCustomVariables;
-import com.dpoint.tutorial.mocdel.NativeJsonDemoRequestDto;
+import com.dpoint.tutorial.model.CamundaCustomVariables;
+import com.dpoint.tutorial.model.NativeJsonDemoRequestDto;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import com.dpoint.tutorial.mocdel.CamundaCompatibleNativeJsonDemoRequestDto;
+import com.dpoint.tutorial.model.CamundaCompatibleNativeJsonDemoRequestDto;
 
 @Service
 public class FormatCamundaRequestsService {

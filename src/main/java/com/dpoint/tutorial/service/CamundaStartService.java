@@ -1,6 +1,6 @@
 package com.dpoint.tutorial.service;
 
-import com.dpoint.tutorial.mocdel.Person;
+import com.dpoint.tutorial.model.Person;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.variable.Variables;

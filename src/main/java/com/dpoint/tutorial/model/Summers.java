@@ -1,4 +1,4 @@
-package com.dpoint.tutorial.mocdel;
+package com.dpoint.tutorial.model;
 
 public class Summers {
     int num1;

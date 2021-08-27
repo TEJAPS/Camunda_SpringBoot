@@ -1,8 +1,8 @@
 package com.dpoint.tutorial.controller;
 
-import com.dpoint.tutorial.mocdel.NativeJsonDemoRequestDto;
-import com.dpoint.tutorial.mocdel.Person;
-import com.dpoint.tutorial.mocdel.Summers;
+import com.dpoint.tutorial.model.NativeJsonDemoRequestDto;
+import com.dpoint.tutorial.model.Person;
+import com.dpoint.tutorial.model.Summers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.dpoint.tutorial.service.CamundaStartService;
