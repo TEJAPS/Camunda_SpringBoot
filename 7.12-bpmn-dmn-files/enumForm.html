@@ -1,0 +1,20 @@
+<form class="form-horizontal" role="form">
+    <div class="form-group">
+        <label for="cv-field">CV</label>
+        <input cam-max-filesize="10000000"
+               cam-variable-name="cv"
+               cam-variable-type="File"
+               type="file"/>
+    </div>
+
+    <div class="form-group">
+        <label for="product_type-field">product type</label>
+        <select cam-variable-name="product_type"
+                cam-variable-type="String" required>
+            <option></option>
+            <option>drink</option>
+            <option>food</option>
+        </select>
+    </div>
+
+</form>

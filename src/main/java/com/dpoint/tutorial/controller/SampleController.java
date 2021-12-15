@@ -3,10 +3,10 @@ package com.dpoint.tutorial.controller;
 import com.dpoint.tutorial.model.NativeJsonDemoRequestDto;
 import com.dpoint.tutorial.model.Person;
 import com.dpoint.tutorial.model.Summers;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 import com.dpoint.tutorial.service.CamundaStartService;
 import com.dpoint.tutorial.service.FormatCamundaRequestsService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class SampleController {
@@ -43,7 +43,7 @@ public class SampleController {
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/demonativejson")
-    public void demoNativeJson(@RequestBody NativeJsonDemoRequestDto nativeJsonDemoRequestDto){
+    public void demoNativeJson(@RequestBody NativeJsonDemoRequestDto nativeJsonDemoRequestDto) {
         camundaRequestsService.callNativeJsonDemoSample(nativeJsonDemoRequestDto);
     }
 }

@@ -18,7 +18,7 @@ public class TestCaseSample {
     public ProcessEngineRule rule = new ProcessEngineRule();
 
     @Test
-    @Deployment(resources = {"testCaseSample.bpmn"})
+    @Deployment(resources = {"7.12-bpmn-dmn-files/testCaseSample.bpmn"})
     public void testSampleCase_happyPath() {
 
         ProcessInstance instance = runtimeService().startProcessInstanceByKey(PROCESS_KEY);
