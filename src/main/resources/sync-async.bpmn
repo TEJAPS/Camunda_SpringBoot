@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_11temw4" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.11.1" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+  <bpmn:process id="sync-async-fail-task-intentionally" name="sync-async-fail-task-intentionally" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_1i0m1xl</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1i0m1xl" sourceRef="StartEvent_1" targetRef="usertask1" />
+    <bpmn:sequenceFlow id="Flow_0ycslnf" sourceRef="usertask1" targetRef="service-task-test" />
+    <bpmn:sequenceFlow id="Flow_12i9s1i" sourceRef="service-task-test" targetRef="usertask2" />
+    <bpmn:endEvent id="Event_03jlvut">
+      <bpmn:incoming>Flow_1wfwzye</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1wfwzye" sourceRef="usertask2" targetRef="Event_03jlvut" />
+    <bpmn:userTask id="usertask1" name="usertask1">
+      <bpmn:incoming>Flow_1i0m1xl</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ycslnf</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="usertask2" name="usertask2">
+      <bpmn:incoming>Flow_12i9s1i</bpmn:incoming>
+      <bpmn:outgoing>Flow_1wfwzye</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="service-task-test" name="service-task-test" camunda:expression="${1==adnkj}">
+      <bpmn:incoming>Flow_0ycslnf</bpmn:incoming>
+      <bpmn:outgoing>Flow_12i9s1i</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="sync-async-fail-task-intentionally">
+      <bpmndi:BPMNEdge id="Flow_1i0m1xl_di" bpmnElement="Flow_1i0m1xl">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ycslnf_di" bpmnElement="Flow_0ycslnf">
+        <di:waypoint x="370" y="117" />
+        <di:waypoint x="430" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_12i9s1i_di" bpmnElement="Flow_12i9s1i">
+        <di:waypoint x="530" y="117" />
+        <di:waypoint x="590" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1wfwzye_di" bpmnElement="Flow_1wfwzye">
+        <di:waypoint x="690" y="117" />
+        <di:waypoint x="752" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_03jlvut_di" bpmnElement="Event_03jlvut">
+        <dc:Bounds x="752" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_069io5x_di" bpmnElement="usertask1">
+        <dc:Bounds x="270" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1tro53v_di" bpmnElement="usertask2">
+        <dc:Bounds x="590" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ma8kbq_di" bpmnElement="service-task-test">
+        <dc:Bounds x="430" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

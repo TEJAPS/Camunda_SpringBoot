@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="unique-first-collect-demo" name="unique-first-collect-demo" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.11.1">
+  <decision id="Decision_05d5hq7" name="level1Decision-uniquedemo">
+    <decisionTable id="DecisionTable_1m26z3j" hitPolicy="COLLECT">
+      <input id="Input_1">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text>variable1</text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" name="output1" typeRef="string" />
+      <output id="OutputClause_0mtdu7b" name="output2" typeRef="integer" />
+      <rule id="DecisionRule_1qtpueq">
+        <inputEntry id="UnaryTests_0d9y86q">
+          <text>"v11"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1pz8s4d">
+          <text>"o11"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ih2d25">
+          <text>10</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0dgw3g3">
+        <inputEntry id="UnaryTests_0anj1er">
+          <text>"v12"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_16cb1o1">
+          <text>"o12"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1txvejk">
+          <text>100</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1kvt63w">
+        <inputEntry id="UnaryTests_0lg2wu9">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0241cyk">
+          <text>"anything"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0cmzr0k">
+          <text>1000</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decision_05d5hq7">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
