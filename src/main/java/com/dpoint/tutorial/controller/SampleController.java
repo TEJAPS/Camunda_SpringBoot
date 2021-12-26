@@ -1,5 +1,7 @@
 package com.dpoint.tutorial.controller;
 
+import com.dpoint.tutorial.delegates.CompleteProcessFromJava;
+import com.dpoint.tutorial.dto.TestCaseSampleDto;
 import com.dpoint.tutorial.model.NativeJsonDemoRequestDto;
 import com.dpoint.tutorial.model.Person;
 import com.dpoint.tutorial.model.Summers;
@@ -15,11 +17,19 @@ public class SampleController {
     CamundaStartService camundaStartService;
 
     @Autowired
+    CompleteProcessFromJava completeProcessFromJava;
+
+    @Autowired
     FormatCamundaRequestsService camundaRequestsService;
 
     @RequestMapping("/get")
     public String index() {
         return "Greetings from Spring Boot!";
+    }
+
+    @RequestMapping(value = "/testcasesampleflow", method = RequestMethod.POST)
+    public void testcaseSample(@RequestBody TestCaseSampleDto obj) throws Exception {
+        completeProcessFromJava.completeTestCaseSampleFlow(obj);
     }
 
     @RequestMapping(value = "/msgeventstart", method = RequestMethod.POST)

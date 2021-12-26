@@ -42,7 +42,9 @@ ProcessEngineRule rule = new ProcessEngineRule();
 That's it nothing more, happy testing...
 
 -----------------------------------------------------------------------------------
-TODO:
+Training topics:
+----------------
+
 1. Claim and other things from runtime
 2. Get and Post request --done
 3. synchronous and asynchronous --done
@@ -65,21 +67,55 @@ TODO:
     https://docs.camunda.org/manual/7.5/user-guide/data-formats/#json-native-json-variable-value
     https://docs.camunda.org/manual/7.5/user-guide/data-formats/json/
     SpinValue.jsonValue(json).create - converts the json string into jackson object which latter needs to be unwrapped to access sub parameters
-16. add plugins to modeller
-17. dynamic config - read configuration
-18. All about sub process example
+16. Add plugins to modeller
+17. Dynamic config - read configuration
+18. All about sub process example 
 19. for loop, parallel loop
 20. external task - 
     doc: https://docs.camunda.org/manual/7.15/user-guide/process-engine/external-tasks/
     external task api: https://docs.camunda.org/manual/7.16/reference/rest/external-task/get-query/
 21. How to test - In progress
-22. Complete a process using postman end to end - 
-23. complete a process using java end to end - 
+22. Complete a process using postman end to end -- done
+23. Complete a process using java end to end -- done
 24. Element templates:
     Example: https://github.com/camunda/camunda-modeler/tree/master/docs/element-templates
     Element template documentation: https://camunda.com/blog/2016/05/camunda-modeler-element-templates/
-    
 25. Presentation
-    
+26. Standardisation, naming convention, comparision with other bpmn tools --done
+27. Database - https://docs.camunda.org/manual/7.5/user-guide/process-engine/database/ -- done
+28. Timer 3 types - 
+
+
 save json as string = JSON.Stringify(obj) - to convert json to string
 read json again from strin - S(stringjson)
+
+
+shares training module:
+-----------------------
+1. Modeller components --done
+2. Get and Post request
+3. Synchronous and Asynchronous
+4. Dmn types(first, unique, collect) and example --done
+5. DMN inheritance calls --done
+6. api intro and usage 
+7. embedded forms
+8. Task listeners and Execution listener --done
+9. Inbuit Constraints --done
+10. Gateways -- exclusive, inclusive, parallel,event based gateway --done
+11. DMN inheritance calls --done
+12. Dmn in bpmn --done
+13. Bpmn in bpmn --done
+14. Exception handling --done
+15. subprocess --done
+16. spin-json-etc:-----pppppppppp
+17. Add plugins to modeller --done
+18. Dynamic configuration - read configuration
+19. for loop, parallel loop
+20. external task --------ppppppppppp
+21. How to write test cases
+22. Complete a process using postman end to end 
+23. complete a process using java end to end 
+24. Element templates: ---------ppppppppppppppppp
+26. Standardisation, naming convention, comparision with other bpmn tools
+27. Database
+28. Claim and other things from runtime
