@@ -1,8 +1,7 @@
-package org.dpoint.channelaise.controller;
+package org.dpoint.openapi.demo.controller;
 
 
 import lombok.extern.slf4j.Slf4j;
-import org.openapitools.client.ApiException;
 import org.openapitools.client.api.ProcessDefinitionApi;
 import org.openapitools.client.model.ProcessInstanceWithVariablesDto;
 import org.openapitools.client.model.StartProcessInstanceDto;
@@ -21,7 +20,7 @@ public class ProcessDefinitionUtilityController {
     ProcessDefinitionApi processDefinitionApi;
 
     @GetMapping("/")
-    public String asd(){
+    public String asd() {
         return "hi";
     }
 
@@ -36,7 +35,7 @@ public class ProcessDefinitionUtilityController {
 
             return processDefinitionApi.startProcessInstanceByKey("testCaseSample",
                     startProcessInstanceDto).putVariablesItem("variable1", variable1);
-        }catch (Exception e){
+        } catch (Exception e) {
             log.error(e.getMessage());
         }
         return null;

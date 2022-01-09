@@ -61,7 +61,7 @@
             <version>2.3.3.RELEASE</version>
         </dependency>
 
-        <!--        added-->
+        <!--        Started - Dependencies for camunda openapi-->
         <dependency>
             <groupId>com.google.code.findbugs</groupId>
             <artifactId>jsr305</artifactId>
@@ -104,12 +104,7 @@
             <artifactId>slf4j-jdk14</artifactId>
             <scope>test</scope>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.github.tomakehurst</groupId>-->
-<!--            <artifactId>wiremock</artifactId>-->
-<!--            <version>${version.wiremock}</version>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
+
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
@@ -139,34 +134,6 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
-<!--            <plugin>-->
-<!--                <groupId>org.openapitools</groupId>-->
-<!--                <artifactId>openapi-generator-maven-plugin</artifactId>-->
-<!--                <version>${openapi.generator.version}</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>generate-java-client</id>-->
-<!--                        <goals>-->
-<!--                            <goal>generate</goal>-->
-<!--                        </goals>-->
-<!--                        <configuration>-->
-<!--                            &lt;!&ndash;                            <library>resttemplate</library>&ndash;&gt;-->
-<!--                            <inputSpec>${project.basedir}/src/main/resources/openapi.json</inputSpec>-->
-<!--                            <output>${project.build.directory}/generated-sources</output>-->
-<!--                            <generatorName>java</generatorName>-->
-<!--                            <configOptions>-->
-<!--                                <dateLibrary>legacy</dateLibrary>-->
-<!--                                <performBeanValidation>false</performBeanValidation>-->
-<!--                                <useBeanValidation>false</useBeanValidation>-->
-<!--                            </configOptions>-->
-<!--                            <generateSupportingFiles>false</generateSupportingFiles>-->
-<!--                            <supportingFilesToGenerate>false</supportingFilesToGenerate>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
-
-
             <plugin>
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>
@@ -174,19 +141,16 @@
                 <executions>
                     <execution>
                         <id>generate-java-client</id>
-<!--                        <phase>generate-test-sources</phase>-->
                         <goals>
                             <goal>generate</goal>
                         </goals>
                         <configuration>
                             <inputSpec>${project.basedir}/src/main/resources/openapi.json</inputSpec>
-<!--                            <output>${project.build.directory}/camunda-openapi-client</output>-->
                             <generatorName>java</generatorName>
                             <configOptions>
                                 <dateLibrary>legacy</dateLibrary>
+                                <useBeanValidation>true</useBeanValidation>
                             </configOptions>
-<!--                            <generateSupportingFiles>false</generateSupportingFiles>-->
-<!--                            <supportingFilesToGenerate>false</supportingFilesToGenerate>-->
                             <generateModelTests>false</generateModelTests>
                         </configuration>
                     </execution>

@@ -1,4 +1,4 @@
-package org.dpoint.channelaise.configuration;
+package org.dpoint.openapi.demo.configuration;
 
 import org.openapitools.client.ApiClient;
 import org.openapitools.client.api.ProcessDefinitionApi;
