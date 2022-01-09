@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 2,
+  "components": [
+    {
+      "label": "textfield1",
+      "type": "textfield",
+      "id": "Field_0ot5pcu",
+      "key": "field_1ywcxwc",
+      "description": "textfield1"
+    },
+    {
+      "values": [
+        {
+          "label": "label1",
+          "value": "value1"
+        }
+      ],
+      "label": "Select1",
+      "type": "select",
+      "id": "Field_0smjyf3",
+      "key": "field_0ekj97w",
+      "description": "Select1"
+    }
+  ],
+  "type": "default",
+  "id": "camunda-built-modeller-form"
+}

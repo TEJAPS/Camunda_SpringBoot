@@ -1,12 +1,14 @@
 package com.dpoint.tutorial.controller;
 
+import com.dpoint.tutorial.delegates.CompleteProcessFromJava;
+import com.dpoint.tutorial.dto.TestCaseSampleDto;
 import com.dpoint.tutorial.model.NativeJsonDemoRequestDto;
 import com.dpoint.tutorial.model.Person;
 import com.dpoint.tutorial.model.Summers;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 import com.dpoint.tutorial.service.CamundaStartService;
 import com.dpoint.tutorial.service.FormatCamundaRequestsService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class SampleController {
@@ -15,11 +17,19 @@ public class SampleController {
     CamundaStartService camundaStartService;
 
     @Autowired
+    CompleteProcessFromJava completeProcessFromJava;
+
+    @Autowired
     FormatCamundaRequestsService camundaRequestsService;
 
     @RequestMapping("/get")
     public String index() {
         return "Greetings from Spring Boot!";
+    }
+
+    @RequestMapping(value = "/testcasesampleflow", method = RequestMethod.POST)
+    public void testcaseSample(@RequestBody TestCaseSampleDto obj) throws Exception {
+        completeProcessFromJava.completeTestCaseSampleFlow(obj);
     }
 
     @RequestMapping(value = "/msgeventstart", method = RequestMethod.POST)
@@ -43,7 +53,7 @@ public class SampleController {
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/demonativejson")
-    public void demoNativeJson(@RequestBody NativeJsonDemoRequestDto nativeJsonDemoRequestDto){
+    public void demoNativeJson(@RequestBody NativeJsonDemoRequestDto nativeJsonDemoRequestDto) {
         camundaRequestsService.callNativeJsonDemoSample(nativeJsonDemoRequestDto);
     }
 }

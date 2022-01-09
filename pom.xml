@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -9,7 +9,8 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <camunda.spring-boot.version>3.4.0</camunda.spring-boot.version>
+        <camunda.spring-boot.version>7.16.0</camunda.spring-boot.version>
+        <!--        7.12 version of camunda - modeler version 2.2.* , camunda 7.16 - modeller version 4.4.0 -->
         <spring-boot.version>2.2.1.RELEASE</spring-boot.version>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
@@ -38,7 +39,6 @@
             <artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
             <version>${camunda.spring-boot.version}</version>
         </dependency>
-
 
 
         <!--        in memory database-->
@@ -73,8 +73,13 @@
         </dependency>
         <dependency>
             <groupId>org.camunda.bpm</groupId>
+            <artifactId>camunda-engine</artifactId>
+            <version>${camunda.spring-boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.camunda.bpm</groupId>
             <artifactId>camunda-engine-plugin-connect</artifactId>
-            <version>7.12.0</version>
+            <version>${camunda.spring-boot.version}</version>
         </dependency>
 
         <!--Spin-->
@@ -96,7 +101,7 @@
         <dependency>
             <groupId>org.camunda.bpm</groupId>
             <artifactId>camunda-engine-plugin-spin</artifactId>
-            <version>7.12.0</version>
+            <version>${camunda.spring-boot.version}</version>
         </dependency>
 
         <!--        lombok -->

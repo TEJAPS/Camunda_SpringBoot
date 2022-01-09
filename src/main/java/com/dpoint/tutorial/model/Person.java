@@ -2,6 +2,9 @@ package com.dpoint.tutorial.model;
 
 
 public class Person {
+    String name;
+    String gender;
+
     public Person(String name, String gender) {
         this.name = name;
         this.gender = gender;
@@ -25,7 +28,4 @@ public class Person {
     public void setGender(String gender) {
         this.gender = gender;
     }
-
-    String name;
-    String gender;
 }

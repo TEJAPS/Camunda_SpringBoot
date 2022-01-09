@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="multileveldecision-1" name="multileveldecision-1" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.11.1">
+  <decision id="level1decision" name="level1decision">
+    <decisionTable id="DecisionTable_1w8u3do">
+      <input id="Input_1" label="InputL1V1">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="OutputL1V1" typeRef="string" />
+      <rule id="DecisionRule_10qqt4v">
+        <inputEntry id="UnaryTests_0zli84l">
+          <text>"hi"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_10jxxhc">
+          <text>"bye"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1iz332a">
+        <inputEntry id="UnaryTests_0jqz2tn">
+          <text>"good"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0zijpg5">
+          <text>"bad"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="level2decision" name="level2decision">
+    <informationRequirement id="InformationRequirement_00f72vg">
+      <requiredDecision href="#level1decision" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1xcgz9z">
+      <input id="InputClause_1bwjhai" label="OutputL1V1">
+        <inputExpression id="LiteralExpression_0itn3h5" typeRef="string" />
+      </input>
+      <input id="InputClause_1egkhby" label="InputL2V1">
+        <inputExpression id="LiteralExpression_0x7ka76" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1pusk1e" label="OutputL2V1" typeRef="string" />
+      <rule id="DecisionRule_1w43upf">
+        <inputEntry id="UnaryTests_0y2lguc">
+          <text>"bye"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1g4gn28">
+          <text>"value1"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1fx8ibf">
+          <text>"row1"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_01rmctg">
+        <inputEntry id="UnaryTests_17cba4t">
+          <text>"good"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17azdx8">
+          <text>"value2"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1b30a9m">
+          <text>"row2"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="level1decision">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_02156x8" dmnElementRef="level2decision">
+        <dc:Bounds height="80" width="180" x="160" y="270" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1p85352" dmnElementRef="InformationRequirement_00f72vg">
+        <di:waypoint x="250" y="180" />
+        <di:waypoint x="250" y="250" />
+        <di:waypoint x="250" y="270" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

@@ -5,8 +5,8 @@
       "authorization": "demodemo"
     }
   },
-  "category4":{
-	"url":"dpointyt.com",
-	"api_url":"ultimatedragonballz.com/v4/api"
+  "category4": {
+    "url": "dpointyt.com",
+    "api_url": "ultimatedragonballz.com/v4/api"
   }
 }

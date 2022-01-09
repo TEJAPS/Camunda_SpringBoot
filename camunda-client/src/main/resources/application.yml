@@ -1,0 +1,5 @@
+server:
+  port: 8096
+
+camunda:
+  uri: http://127.0.0.1:8085/engine-rest

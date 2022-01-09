@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_01p6juu" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.11.1" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+  <bpmn:process id="connector-sample-7-16" name="connector-sample-7-16" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="name" label="name" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>Flow_0xdbjhs</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_04htsde" sourceRef="verifyvariables" targetRef="getrequest" />
+    <bpmn:sequenceFlow id="Flow_1h8clgf" sourceRef="getrequest" targetRef="verifyvariablespostget" />
+    <bpmn:sequenceFlow id="Flow_0xwvjrw" sourceRef="verifyvariablespostget" targetRef="postrequest" />
+    <bpmn:sequenceFlow id="Flow_0dqalg1" sourceRef="postrequest" targetRef="verifytaskpostrequest" />
+    <bpmn:userTask id="verifyvariables" name="verifyvariables">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="name" label="name" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0xdbjhs</bpmn:incoming>
+      <bpmn:outgoing>Flow_04htsde</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="getrequest" name="Get Request">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="url">http://localhost:8085/getconnector/${name}</camunda:inputParameter>
+            <camunda:inputParameter name="method">GET</camunda:inputParameter>
+            <camunda:outputParameter name="namelength">${response}</camunda:outputParameter>
+          </camunda:inputOutput>
+          <camunda:connectorId>http-connector</camunda:connectorId>
+        </camunda:connector>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_04htsde</bpmn:incoming>
+      <bpmn:outgoing>Flow_1h8clgf</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="verifyvariablespostget" name="verifyvariablespostget">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="namelength" label="namelength" type="long" />
+          <camunda:formField id="num1" label="num1" type="long" />
+          <camunda:formField id="num2" label="num2" type="long" />
+          <camunda:formField id="num3" label="num3" type="long" />
+          <camunda:formField id="num4" label="num4" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1h8clgf</bpmn:incoming>
+      <bpmn:outgoing>Flow_0xwvjrw</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="verifytaskpostrequest" name="verifytaskpostrequest">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="countoutput" label="countoutput" type="long">
+            <camunda:validation>
+              <camunda:constraint name="readonly" />
+            </camunda:validation>
+          </camunda:formField>
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0dqalg1</bpmn:incoming>
+      <bpmn:outgoing>Flow_0kqrnxy</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="postrequest" name="Post Request">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="headers">
+              <camunda:map>
+                <camunda:entry key="Content-Type">application/json</camunda:entry>
+              </camunda:map>
+            </camunda:inputParameter>
+            <camunda:inputParameter name="url">http://localhost:8085/postconnector</camunda:inputParameter>
+            <camunda:inputParameter name="method">POST</camunda:inputParameter>
+            <camunda:inputParameter name="payload">{
+"num1":${num1},
+"num2":${num2},
+"num3":${num3},
+"num4":${num4}
+}</camunda:inputParameter>
+            <camunda:outputParameter name="countoutput">${response}</camunda:outputParameter>
+          </camunda:inputOutput>
+          <camunda:connectorId>http-connector</camunda:connectorId>
+        </camunda:connector>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0xwvjrw</bpmn:incoming>
+      <bpmn:outgoing>Flow_0dqalg1</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="Event_1yt60na">
+      <bpmn:incoming>Flow_0kqrnxy</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:userTask id="embeddedforms-deployment" name="embeddedforms-deployment" camunda:formKey="embedded:deployment:do.html" />
+    <bpmn:userTask id="embeddedforms-resourcepath" name="embeddedforms-resourcepath" camunda:formKey="embedded:app:forms/do.html" />
+    <bpmn:userTask id="camunda-form-deployment" name="camunda-form-deployment" camunda:formRef="camunda-built-modeller-form" camunda:formRefBinding="deployment" />
+    <bpmn:userTask id="camunda-external-form" name="camunda-external-form" camunda:formKey="do" camunda:assignee="demo" />
+    <bpmn:sequenceFlow id="Flow_0xdbjhs" sourceRef="StartEvent_1" targetRef="verifyvariables" />
+    <bpmn:sequenceFlow id="Flow_0kqrnxy" sourceRef="verifytaskpostrequest" targetRef="Event_1yt60na" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="connector-sample-7-16">
+      <bpmndi:BPMNEdge id="Flow_0kqrnxy_di" bpmnElement="Flow_0kqrnxy">
+        <di:waypoint x="990" y="120" />
+        <di:waypoint x="1112" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0xdbjhs_di" bpmnElement="Flow_0xdbjhs">
+        <di:waypoint x="198" y="120" />
+        <di:waypoint x="250" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0dqalg1_di" bpmnElement="Flow_0dqalg1">
+        <di:waypoint x="830" y="120" />
+        <di:waypoint x="890" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0xwvjrw_di" bpmnElement="Flow_0xwvjrw">
+        <di:waypoint x="670" y="120" />
+        <di:waypoint x="730" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1h8clgf_di" bpmnElement="Flow_1h8clgf">
+        <di:waypoint x="510" y="120" />
+        <di:waypoint x="570" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_04htsde_di" bpmnElement="Flow_04htsde">
+        <di:waypoint x="350" y="120" />
+        <di:waypoint x="410" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="162" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1nxtbvr_di" bpmnElement="verifyvariables">
+        <dc:Bounds x="250" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_15csa18_di" bpmnElement="getrequest">
+        <dc:Bounds x="410" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_087k7ft_di" bpmnElement="verifyvariablespostget">
+        <dc:Bounds x="570" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_131njmm_di" bpmnElement="verifytaskpostrequest">
+        <dc:Bounds x="890" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ta8ehh_di" bpmnElement="postrequest">
+        <dc:Bounds x="730" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1yt60na_di" bpmnElement="Event_1yt60na">
+        <dc:Bounds x="1112" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0rg9al5_di" bpmnElement="embeddedforms-deployment">
+        <dc:Bounds x="320" y="270" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_14viorp_di" bpmnElement="embeddedforms-resourcepath" bioc:stroke="#e53935" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#e53935">
+        <dc:Bounds x="600" y="270" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0wm61ev_di" bpmnElement="camunda-form-deployment">
+        <dc:Bounds x="460" y="270" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ncjgul_di" bpmnElement="camunda-external-form" bioc:stroke="#e53935" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#e53935">
+        <dc:Bounds x="730" y="270" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
