@@ -16,13 +16,11 @@ public class CompleteProcessFromJava {
 
     @Autowired
     RuntimeService runtimeService;
-
-    @Autowired
-    private TaskService taskService;
-
     String processDefinitionName = "testCaseSample";
     String processInstanceId;
     String taskInstanceId;
+    @Autowired
+    private TaskService taskService;
 
     public void completeTestCaseSampleFlow(TestCaseSampleDto testCaseSampleDto) {
         startTestCaseSampleFlow(testCaseSampleDto.getAttribute1(), testCaseSampleDto.getAssignPerson(), testCaseSampleDto.getBusinessKey());
