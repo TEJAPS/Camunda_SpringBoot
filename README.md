@@ -45,6 +45,7 @@ Demonstation on youtube: https://www.youtube.com/watch?v=rQmeHZdfdYk
 
 ### Steps for OpenApi/Swagger in Spring Boot Camunda
 
+
 Step 1: Create a client <br/>
 Step 2: Download jar from jfrog: https://camunda.jfrog.io/ui/native/camunda-bpm/org/camunda/bpm/camunda-engine-rest-openapi/ <br/>
 Step 3: Extract the jar and add openapi json file to client resources folder <br/>
