@@ -72,3 +72,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 follow learning from here:
 https://reactjs.org/docs/faq-ajax.html
 https://reactjs.org/
+
+continue from here: https://camunda.com/blog/2015/08/rendering-bpmn-and-highlight-current/
+
+diagram reference: https://codesandbox.io/s/quizzical-lake-szfyo?file=/src/App.js

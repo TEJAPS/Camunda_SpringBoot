@@ -50,24 +50,72 @@ header>ul#headerright {
   display: flex;
 }
 .filter {
+  flex-grow: 0.5;
+}
+.tasklistdetail{
+  display: flex;
+  flex-grow: 5;
+}
+.tasklistgroup{
   flex-grow: 1;
+}
+.tasklistheader{
+  clear: both;
 }
 .tasklist {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  flex-grow: 1;
   box-shadow: 0 2px 10px -4px #555;
   min-height: 100vh;
 }
-
-.taskdetail{
-  flex-grow: 3;
+.task{
+padding: 12px;
+margin: 10px;
+display: flex;
+justify-content: space-between;
+cursor:pointer;
+border-left: 2px #ad192d solid;
+}
+.taskinfo{
+text-align: left;
+}
+.taskpriority{
+text-align: right;
+align-self: end;
 }
 
-.task{
-padding: 2px;
-margin: 2px;
+.taskdetail {
+  flex-grow: 2;
+}
+.taskdetailcontent{
+display: grid;
+grid-row-gap:2px;
+padding: 14px;
+}
+.taskdetailcontent>div{
+  font-size: 1.2em;
+  padding: 2px;
+  text-align: left;
+}
+.taskdetailcontent>div>ul{
+  display: flex;  
+  justify-content: space-between;
+  padding:0;
+}
+.taskdetailcontent>div>ul>li {
+  display: inline-flex;
+  padding:1px;
+}
+.taskDetailMenuComponent{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.taskDetailMenuComponent>span{
+  padding: 5px;
+  text-transform: capitalize;
+  border-bottom: red 2px solid;
 }
 
 footer{
@@ -80,4 +128,11 @@ footer{
   position: sticky;
   bottom: 0px;
   border-top: 1px solid rgb(231, 228, 228);
+}
+#modellercontainer{
+border: 1px solid #000000;
+height: "90vh";
+width: "90vw";
+margin: "auto";
+/* background-color: red; */
 }

@@ -4,20 +4,22 @@ import "../../index.css";
 class Task extends React.Component {
   constructor(props) {
     super(props);
-    this.customClick = this.customClick.bind(this);
+    this.handleDivClick = this.handleDivClick.bind(this);
   }
 
-  customClick(e) {
-    console.log(e, "hey macha");
+  handleDivClick(e) {
+    this.props.changeActiveTaskId(this.props.id);
   }
+
   render() {
     return (
-      <div class="task">
-        <p>{this.props.name} </p>
-        <p>{this.props.decision}</p>
-        <p>{this.props.creationDate}</p>
-        <p>{this.props.priority}</p>
-        {/* <button onClick={this.customClick}>Try Click</button> */}
+      <div onClick={this.handleDivClick} class="task">
+        <section class="taskinfo">
+          <p>{this.props.name} </p>
+          <p>{this.props.decision.split(":")[0]}</p>
+          <p>{this.props.creationDate | "today"}</p>
+        </section>
+        <section class="taskpriority">{this.props.priority}</section>
       </div>
     );
   }
