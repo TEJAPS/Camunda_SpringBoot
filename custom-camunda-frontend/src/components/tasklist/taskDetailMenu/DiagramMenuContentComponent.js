@@ -14,7 +14,9 @@ export default class DiagramMenuContentComponent extends Component {
     var container = document.getElementById("modellercontainer");
     axios
       .get(
-        "http://127.0.0.1:8085/engine-rest/process-definition/expression:1:37f87bc2-7c42-11ec-906c-50e085e44b12/xml"
+        "http://127.0.0.1:8085/engine-rest/process-definition/" +
+          this.props.processDefinitionId +
+          "/xml"
       )
       .then((r) => {
         this.setState({ diagram: r.data.bpmn20Xml });

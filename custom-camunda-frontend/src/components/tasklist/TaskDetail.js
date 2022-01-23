@@ -27,7 +27,6 @@ export default class TaskDetail extends Component {
         .then((res) => res.json())
         .then(
           (result) => {
-            console.log(result);
             this.setState({
               isLoaded: true,
               taskDetail: result,
@@ -73,6 +72,8 @@ export default class TaskDetail extends Component {
 
             <TaskDetailMenuContentComponent
               compname={this.state.componentToDisplay}
+              processDefinitionId={this.state.taskDetail.processDefinitionId}
+              activeTaskId={this.state.activeTaskId}
             />
           </div>
         )}

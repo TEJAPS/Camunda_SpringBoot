@@ -13,11 +13,13 @@ export default class TaskDetailMenuContentComponent extends Component {
     return (
       <div class="tasldetailmenucontentcomponent">
         {this.props.compname === "Form" ? (
-          <FormMenuContentComponent />
+          <FormMenuContentComponent activeTaskId={this.props.activeTaskId} />
         ) : this.props.compname === "History" ? (
           <HistoryMenuContentComponent />
         ) : this.props.compname === "Diagram" ? (
-          <DiagramMenuContentComponent />
+          <DiagramMenuContentComponent
+            processDefinitionId={this.props.processDefinitionId}
+          />
         ) : (
           <DescriptionMenuContentComponent />
         )}

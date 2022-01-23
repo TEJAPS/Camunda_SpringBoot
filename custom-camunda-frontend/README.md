@@ -76,3 +76,13 @@ https://reactjs.org/
 continue from here: https://camunda.com/blog/2015/08/rendering-bpmn-and-highlight-current/
 
 diagram reference: https://codesandbox.io/s/quizzical-lake-szfyo?file=/src/App.js
+
+repo reference: https://github.com/camunda-consulting/code/blob/master/snippets/jsf-simple-tasklist/src/main/webapp/app/taskDetail.html
+
+camunda frontend blog: https://camunda.com/blog/2015/08/rendering-bpmn-and-highlight-current/
+
+Pending:
+reloading content
+design of rendered bpmn
+form fetch html display - 
+hovering and animations
