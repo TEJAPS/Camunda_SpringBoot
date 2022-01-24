@@ -8,9 +8,18 @@ export default class DiagramMenuContentComponent extends Component {
     this.state = {
       diagram: "",
     };
+    this.getData = this.getData.bind(this);
   }
 
   componentDidMount() {
+    this.getData();
+  }
+
+  // componentDidUpdate() {
+  //   this.getData();
+  // }
+
+  getData() {
     var container = document.getElementById("modellercontainer");
     axios
       .get(
@@ -51,7 +60,6 @@ export default class DiagramMenuContentComponent extends Component {
         console.log(e, "rror");
       });
   }
-
   render() {
     return (
       <div>

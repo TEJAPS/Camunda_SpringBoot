@@ -54,8 +54,8 @@ export default class TaskDetail extends Component {
           <div class="taskdetailcontent">
             <div>{this.state.taskDetail.name}</div>
             <div>
-              {typeof this.state.taskDetail.processDefinitionId === "string"
-                ? this.state.taskDetail.processDefinitionId.split(":")[0]
+              {typeof this.state.taskDetail.processDefinitionKey === "string"
+                ? this.state.taskDetail.processDefinitionKey.split(":")[0]
                 : ""}
             </div>
             <div>

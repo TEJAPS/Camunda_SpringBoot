@@ -8,7 +8,17 @@ export default class FormMenuContentComponent extends Component {
       formdata: "",
     };
     this.getdata = this.getdata.bind(this);
+    this.createMarkup = this.createMarkup.bind(this);
   }
+
+  componentDidMount() {
+    this.getdata();
+    console.log("component did mount");
+  }
+  // componentDidUpdate() {
+  //   console.log("component did update");
+  //   this.getdata();
+  // }
 
   getdata() {
     axios
@@ -19,14 +29,17 @@ export default class FormMenuContentComponent extends Component {
       )
       // .then((res) => res.json())
       .then((result) => {
-        console.log(result);
-        // this.setState({
-        //   formdata: result,
-        // });
+        this.setState({
+          formdata: result.data,
+        });
       })
       .catch((e) => {
         console.log(e, "rror");
       });
+  }
+
+  createMarkup() {
+    return { __html: this.state.formdata };
   }
 
   render() {
@@ -35,7 +48,8 @@ export default class FormMenuContentComponent extends Component {
         <button onClick={this.getdata}>
           FormMenuContentComponent: activeTaskId={this.props.activeTaskId}
         </button>
-        {this.state.formdata}
+        <div dangerouslySetInnerHTML={this.createMarkup()} />
+        {this.state.formdata === ""}
       </div>
     );
   }
