@@ -63,7 +63,9 @@ class TaskList extends React.Component {
               ))}
             </div>
           </div>
-          <TaskDetail activeTaskId={this.state.activeTaskId} />
+          <TaskDetail
+            activeTaskId={this.state.activeTaskId}
+          />
         </div>
       );
     }

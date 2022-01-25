@@ -81,8 +81,10 @@ repo reference: https://github.com/camunda-consulting/code/blob/master/snippets/
 
 camunda frontend blog: https://camunda.com/blog/2015/08/rendering-bpmn-and-highlight-current/
 
+https://codesandbox.io/s/react-set-color-viewer-wdus0?file=/src/App.js:1010-1637
+
 Pending:
 reloading content
 design of rendered bpmn
-form fetch html display - 
+form fetch html display -
 hovering and animations

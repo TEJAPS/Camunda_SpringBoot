@@ -34,7 +34,7 @@ export default class FormMenuContentComponent extends Component {
         });
       })
       .catch((e) => {
-        console.log(e, "rror");
+        console.log(e, "error");
       });
   }
 
@@ -44,10 +44,7 @@ export default class FormMenuContentComponent extends Component {
 
   render() {
     return (
-      <div>
-        <button onClick={this.getdata}>
-          FormMenuContentComponent: activeTaskId={this.props.activeTaskId}
-        </button>
+      <div class="tasldetailmenucontentcomponent">
         <div dangerouslySetInnerHTML={this.createMarkup()} />
         {this.state.formdata === ""}
       </div>

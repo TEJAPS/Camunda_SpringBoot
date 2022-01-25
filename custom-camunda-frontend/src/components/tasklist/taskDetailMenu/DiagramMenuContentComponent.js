@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import Modeler from "bpmn-js/lib/Modeler";
+// import Viewer from "bpmn-js/lib/Modeler";
+import Viewer from "bpmn-js/lib/NavigatedViewer";
+import "bpmn-js/dist/assets/diagram-js.css";
+import "bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css";
 import axios from "axios";
 
 export default class DiagramMenuContentComponent extends Component {
@@ -9,15 +12,12 @@ export default class DiagramMenuContentComponent extends Component {
       diagram: "",
     };
     this.getData = this.getData.bind(this);
+    this.setColor = this.setColor;
   }
 
   componentDidMount() {
     this.getData();
   }
-
-  // componentDidUpdate() {
-  //   this.getData();
-  // }
 
   getData() {
     var container = document.getElementById("modellercontainer");
@@ -29,14 +29,14 @@ export default class DiagramMenuContentComponent extends Component {
       )
       .then((r) => {
         this.setState({ diagram: r.data.bpmn20Xml });
-        const modeler = new Modeler({
+        const viewer = new Viewer({
           container,
           keyboard: {
             bindTo: document,
           },
         });
 
-        modeler
+        viewer
           .importXML(r.data.bpmn20Xml)
           .then(({ warnings }) => {
             if (warnings.length) {
@@ -45,11 +45,26 @@ export default class DiagramMenuContentComponent extends Component {
               console.log("no warnings");
             }
 
-            const canvas = modeler.get("modeling");
-            canvas.setColor("CalmCustomerTask", {
-              stroke: "green",
-              fill: "yellow",
-            });
+            function setColor(element, stroke, fill) {
+              var businessObject = element.businessObject;
+
+              businessObject.di.set("stroke", stroke);
+              businessObject.di.set("fill", fill);
+
+              var gfx = elementRegistry.getGraphics(element);
+
+              var type = element.waypoints ? "connection" : "shape";
+
+              graphicsFactory.update(type, element, gfx);
+            }
+
+            const elementRegistry = viewer.get("elementRegistry");
+
+            const graphicsFactory = viewer.get("graphicsFactory");
+
+            const element = elementRegistry.get(this.props.taskname);
+
+            setColor(element, "green", "yellow");
           })
           .catch((err) => {
             console.log("error", err);
@@ -62,9 +77,7 @@ export default class DiagramMenuContentComponent extends Component {
   }
   render() {
     return (
-      <div>
-        <div id="modellercontainer"></div>
-      </div>
+      <div class="tasldetailmenucontentcomponent" id="modellercontainer"></div>
     );
   }
 }

@@ -71,9 +71,12 @@ export default class TaskDetail extends Component {
             />
 
             <TaskDetailMenuContentComponent
+              className="taskDetailMenuContentComponent"
               compname={this.state.componentToDisplay}
               processDefinitionId={this.state.taskDetail.processDefinitionId}
               activeTaskId={this.state.activeTaskId}
+              taskDescription={this.state.taskDetail.description}
+              taskname={this.state.taskDetail.name}
             />
           </div>
         )}
