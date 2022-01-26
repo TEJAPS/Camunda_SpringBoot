@@ -76,16 +76,7 @@ export default class FormMenuContentComponent extends Component {
   render() {
     return (
       <div class="tasldetailmenucontentcomponent">
-        {console.log(
-          "rerendered formmenucontentcomponent",
-          this.props.activeTaskId,
-          this.state.url
-        )}
-        <p>
-          {this.props.activeTaskId}, {this.state.url}
-        </p>
         <div dangerouslySetInnerHTML={this.createMarkup()} />
-        {/* {this.state.formdata === ""} */}
       </div>
     );
   }

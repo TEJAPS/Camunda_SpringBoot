@@ -100,13 +100,7 @@ export default class DiagramMenuContentComponent extends Component {
   }
   render() {
     return (
-      <>
-        <p>{this.props.activeTaskId}</p>
-        <div
-          class="tasldetailmenucontentcomponent"
-          id="modellercontainer"
-        ></div>
-      </>
+      <div class="tasldetailmenucontentcomponent" id="modellercontainer"></div>
     );
   }
 }

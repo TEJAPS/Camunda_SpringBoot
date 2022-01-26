@@ -63,7 +63,6 @@ export default class HistoryMenuContentComponent extends Component {
       <React.Fragment>
         <p>{record.timestamp}</p>
         <p>{record.operationType}</p>
-        <p>{this.props.activeTaskId}</p>
         <hr />
       </React.Fragment>
     ));

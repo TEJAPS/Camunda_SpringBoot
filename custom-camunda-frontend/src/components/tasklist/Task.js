@@ -13,7 +13,7 @@ class Task extends React.Component {
 
   render() {
     return (
-      <div onClick={this.handleDivClick} class="task">
+      <div onClick={this.handleDivClick} class={"task " + this.props.className}>
         <section class="taskinfo">
           <p>{this.props.name} </p>
           <p>{this.props.decision.split(":")[0]}</p>

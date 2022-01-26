@@ -81,6 +81,10 @@ class TaskList extends React.Component {
                   decision={task.processDefinitionId}
                   priority={task.priority}
                   changeActiveTaskId={this.changeActiveTaskId}
+                  className={
+                    ("activespan",
+                    this.state.activeTaskId === task.id ? "activetask" : "")
+                  }
                 />
               ))}
             </div>

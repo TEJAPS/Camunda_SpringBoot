@@ -77,9 +77,14 @@ justify-content: space-between;
 cursor:pointer;
 border-left: 2px #ad192d solid;
 }
+
+.activetask {
+  border: 2px solid red;
+}
+
 .task:hover{
 border-left: 2px blue solid;
-box-shadow: #000000 5px 2px;
+/* box-shadow: #000000 5px 2px; */
 }
 
 .taskinfo{
