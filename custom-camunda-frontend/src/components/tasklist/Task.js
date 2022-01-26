@@ -18,6 +18,7 @@ class Task extends React.Component {
           <p>{this.props.name} </p>
           <p>{this.props.decision.split(":")[0]}</p>
           <p>{this.props.creationDate | "today"}</p>
+          <p>{this.props.id}</p>
         </section>
         <section class="taskpriority">{this.props.priority}</section>
       </div>

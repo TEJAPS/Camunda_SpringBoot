@@ -6,35 +6,66 @@ export default class FormMenuContentComponent extends Component {
     super(props);
     this.state = {
       formdata: "",
+      url: "",
+      activeTaskId: "",
     };
     this.getdata = this.getdata.bind(this);
     this.createMarkup = this.createMarkup.bind(this);
   }
 
-  componentDidMount() {
-    this.getdata();
-    console.log("component did mount");
-  }
-  // componentDidUpdate() {
-  //   console.log("component did update");
-  //   this.getdata();
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log(
+  //     "this.props.activeTaskId",
+  //     this.props.activeTaskId,
+  //     "nextProps.activeTaskId",
+  //     nextProps.activeTaskId,
+  //     "this.props.activeTaskId === undefined",
+  //     this.props.activeTaskId === undefined,
+  //     "nextProps.activeTaskId !== this.props.activeTaskId",
+  //     nextProps.activeTaskId !== this.props.activeTaskId
+  //   );
+  //   if (nextProps.activeTaskId == this.props.activeTaskId) {
+  //     return false;
+  //   }
+  //   return true;
   // }
 
+  componentDidMount() {
+    console.log(
+      "componentWillMount this.props.activeTaskId",
+      this.props.activeTaskId
+    );
+    this.getdata();
+  }
+
+  componentDidUpdate(prevProps) {
+    console.log(
+      "componentWillUpdate this.props.activeTaskId",
+      this.props.activeTaskId
+    );
+    if (this.props.activeTaskId !== prevProps.activeTaskId) {
+      this.getdata();
+    }
+  }
+
   getdata() {
+    var url =
+      "http://127.0.0.1:8085/engine-rest/task/" +
+      this.props.activeTaskId +
+      "/rendered-form";
     axios
-      .get(
-        "http://127.0.0.1:8085/engine-rest/task/" +
-          this.props.activeTaskId +
-          "/rendered-form"
-      )
-      // .then((res) => res.json())
+      .get(url)
       .then((result) => {
         this.setState({
           formdata: result.data,
+          url: url,
         });
       })
       .catch((e) => {
-        console.log(e, "error");
+        this.setState({
+          formdata: "no form",
+          url: url,
+        });
       });
   }
 
@@ -45,8 +76,16 @@ export default class FormMenuContentComponent extends Component {
   render() {
     return (
       <div class="tasldetailmenucontentcomponent">
+        {console.log(
+          "rerendered formmenucontentcomponent",
+          this.props.activeTaskId,
+          this.state.url
+        )}
+        <p>
+          {this.props.activeTaskId}, {this.state.url}
+        </p>
         <div dangerouslySetInnerHTML={this.createMarkup()} />
-        {this.state.formdata === ""}
+        {/* {this.state.formdata === ""} */}
       </div>
     );
   }

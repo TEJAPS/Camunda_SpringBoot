@@ -11,16 +11,39 @@ export default class DiagramMenuContentComponent extends Component {
     this.state = {
       diagram: "",
     };
-    this.getData = this.getData.bind(this);
-    this.setColor = this.setColor;
+    this.fetchData = this.fetchData.bind(this);
+  }
+
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   if (
+  //     // nextProps.processDefinitionId !== this.props.processDefinitionId ||
+  //     nextProps.activeTaskId !== this.props.activeTaskId
+  //   ) {
+  //     return true;
+  //   }
+  //   return false;
+  // }
+
+  componentDidUpdate(prevProps) {
+    console.log(
+      "componentDidUpdate DiagramMenuContentComponent",
+      this.props.activeTaskId
+    );
+    if (
+      this.props.taskDetailMenuContentComponentId !==
+      prevProps.taskDetailMenuContentComponentId
+    ) {
+      this.fetchData();
+    }
   }
 
   componentDidMount() {
-    this.getData();
+    this.fetchData();
   }
 
-  getData() {
+  fetchData() {
     var container = document.getElementById("modellercontainer");
+    container.innerHTML = "";
     axios
       .get(
         "http://127.0.0.1:8085/engine-rest/process-definition/" +
@@ -77,7 +100,13 @@ export default class DiagramMenuContentComponent extends Component {
   }
   render() {
     return (
-      <div class="tasldetailmenucontentcomponent" id="modellercontainer"></div>
+      <>
+        <p>{this.props.activeTaskId}</p>
+        <div
+          class="tasldetailmenucontentcomponent"
+          id="modellercontainer"
+        ></div>
+      </>
     );
   }
 }

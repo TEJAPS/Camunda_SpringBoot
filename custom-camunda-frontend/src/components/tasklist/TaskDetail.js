@@ -57,6 +57,7 @@ export default class TaskDetail extends Component {
               {typeof this.state.taskDetail.processDefinitionKey === "string"
                 ? this.state.taskDetail.processDefinitionKey.split(":")[0]
                 : ""}
+              {this.state.activeTaskId}
             </div>
             <div>
               <ul>
@@ -77,6 +78,10 @@ export default class TaskDetail extends Component {
               activeTaskId={this.state.activeTaskId}
               taskDescription={this.state.taskDetail.description}
               taskname={this.state.taskDetail.name}
+              taskDetailMenuContentComponentId={
+                this.state.activeTaskId +
+                this.state.taskDetail.processDefinitionId
+              }
             />
           </div>
         )}

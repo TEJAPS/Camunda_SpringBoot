@@ -77,6 +77,11 @@ justify-content: space-between;
 cursor:pointer;
 border-left: 2px #ad192d solid;
 }
+.task:hover{
+border-left: 2px blue solid;
+box-shadow: #000000 5px 2px;
+}
+
 .taskinfo{
 text-align: left;
 }
@@ -117,7 +122,12 @@ padding: 14px;
 .taskDetailMenuComponent>span{
   padding: 5px;
   text-transform: capitalize;
-  border-bottom: red 2px solid;
+}
+.activespan{
+  border-bottom: 2px solid red;
+}
+.taskDetailMenuComponent>span:hover  {
+border-bottom: blue 2px solid;
 }
 .tasldetailmenucontentcomponent{
 height: 80vh;

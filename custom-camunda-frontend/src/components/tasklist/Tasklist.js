@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEff } from "react";
 import Task from "./Task";
 import TaskDetail from "./TaskDetail";
 import "../../index.css";
@@ -13,13 +13,33 @@ class TaskList extends React.Component {
       activeTaskId: null,
     };
     this.changeActiveTaskId = this.changeActiveTaskId.bind(this);
+    this.fetchData = this.fetchData.bind(this);
+    // this.changeActiveTask = this.changeActiveTask.bind(this);
   }
 
   changeActiveTaskId(activeTaskIdValue) {
     this.setState({ activeTaskId: activeTaskIdValue });
   }
 
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log(
+  //     "should component update is null",
+  //     this.state.activeTaskId,
+  //     this.state.activeTaskId == null
+  //   );
+  //   if (nextState.activeTaskId !== this.state.activeTaskId) {
+  //     return true;
+  //   }
+  //   return false;
+  // }
+  // componentDidUpdate() {
+  //   this.fetchData();
+  // }
   componentDidMount() {
+    this.fetchData();
+  }
+
+  fetchData() {
     fetch("http://127.0.0.1:8085/engine-rest/task")
       .then((res) => res.json())
       .then(
@@ -27,6 +47,7 @@ class TaskList extends React.Component {
           this.setState({
             isLoaded: true,
             tasks: result,
+            // activeTaskId: this.props.activeTaskId,
           });
         },
         (error) => {
@@ -52,6 +73,7 @@ class TaskList extends React.Component {
             <div class="tasklist">
               {tasks.map((task) => (
                 <Task
+                  onClick={this.changeActiveTask}
                   key={task.id}
                   id={task.id}
                   name={task.name}
@@ -63,9 +85,7 @@ class TaskList extends React.Component {
               ))}
             </div>
           </div>
-          <TaskDetail
-            activeTaskId={this.state.activeTaskId}
-          />
+          <TaskDetail activeTaskId={this.state.activeTaskId} />
         </div>
       );
     }
