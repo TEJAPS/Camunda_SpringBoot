@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: 'IBM Plex Sans','IBMPlexSans','open_sansregular',Helvetica,Arial,Verdana,sans-serif;
+  min-height: 100%;
 }
 
 
@@ -141,13 +143,17 @@ height: 80vh;
 footer{
   display: flex;
   background-color: black;
-  color:#777;
+  color:white;
   justify-content: space-between;
   padding:0;
   margin:0;
   position: sticky;
   bottom: 0px;
   border-top: 1px solid rgb(231, 228, 228);
+  margin-top: auto;
+}
+footer>p{
+  margin: 8px 2px;
 }
 #modellercontainer{
 border: 1px solid #000000;
@@ -156,4 +162,71 @@ width: "50vw";
 flex-wrap: wrap;
 /* margin: "auto"; */
 /* background-color: red; */
+}
+
+
+/* CSS for homepage */
+.homepage{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #e5e5e5;
+}
+
+.homepagecontent{
+  /* background-color: green; */
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+}
+
+.textaligncenter{
+  text-align: center;
+}
+
+.homepageapplicationcontent{
+  display: flex;
+  justify-content: space-around;
+}
+.homepageapplicationlinksection{
+  display: flex;
+  flex-direction: column;
+}
+
+.homepagelinksection{
+  display: flex;
+  flex-direction: column;
+}
+.blackcircle {
+  list-style: black circle;
+}
+.whitebg{
+  background-color: #ffffff;
+}
+.displayflex{
+  display: flex;
+}
+.flexdirectioncol{
+  flex-direction: column;
+}
+.margin4vh{
+  margin: 4vh;
+}
+.margin2vh{
+  margin: 2vh;
+}
+.padding4vh{
+  padding: 4vh;
+}
+.flexgrow1{
+  flex-grow: 1;
+}
+.flexgrow2{
+  flex-grow: 2;
+}
+.bottomborderstyle1{
+  border-bottom: 1px solid #e5e5e5;
+}
+h3{
+  line-height: 1.4;
 }
