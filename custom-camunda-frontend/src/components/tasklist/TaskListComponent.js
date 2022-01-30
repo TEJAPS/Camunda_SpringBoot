@@ -1,9 +1,9 @@
 import React, { useEff } from "react";
-import Task from "./Task";
-import TaskDetail from "./TaskDetail";
+import TaskComponent from "./TaskComponent";
+import TaskDetailComponent from "./TaskDetailComponent";
 import "../../index.css";
 
-class TaskList extends React.Component {
+export default class TaskListComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,26 +21,12 @@ class TaskList extends React.Component {
     this.setState({ activeTaskId: activeTaskIdValue });
   }
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   console.log(
-  //     "should component update is null",
-  //     this.state.activeTaskId,
-  //     this.state.activeTaskId == null
-  //   );
-  //   if (nextState.activeTaskId !== this.state.activeTaskId) {
-  //     return true;
-  //   }
-  //   return false;
-  // }
-  // componentDidUpdate() {
-  //   this.fetchData();
-  // }
   componentDidMount() {
     this.fetchData();
   }
 
   fetchData() {
-    fetch("http://127.0.0.1:8085/engine-rest/task")
+    fetch(process.env.REACT_APP_CAMUNDA_ENGINE_BASE_URL + "task")
       .then((res) => res.json())
       .then(
         (result) => {
@@ -69,10 +55,12 @@ class TaskList extends React.Component {
       return (
         <div class="tasklistdetail">
           <div class="tasklistgroup">
-            <div class="tasklistheader boxbottomborder">Created</div>
+            <div class="tasklistheader boxbottomborder textaligncenter">
+              Created
+            </div>
             <div class="tasklist">
               {tasks.map((task) => (
-                <Task
+                <TaskComponent
                   onClick={this.changeActiveTask}
                   key={task.id}
                   id={task.id}
@@ -89,11 +77,9 @@ class TaskList extends React.Component {
               ))}
             </div>
           </div>
-          <TaskDetail activeTaskId={this.state.activeTaskId} />
+          <TaskDetailComponent activeTaskId={this.state.activeTaskId} />
         </div>
       );
     }
   }
 }
-
-export default TaskList;

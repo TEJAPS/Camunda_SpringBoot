@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import "../../index.css";
 
-export default class Filter extends Component {
+export default class FilterComponent extends Component {
   render() {
     return (
       <div class="filter">
-        <p class="boxbottomborder">Create a filter +</p>
+        <p class="boxbottomborder textaligncenter">Create a filter +</p>
       </div>
     );
   }

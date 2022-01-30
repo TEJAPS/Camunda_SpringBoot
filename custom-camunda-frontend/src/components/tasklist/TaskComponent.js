@@ -1,7 +1,7 @@
 import React from "react";
 import "../../index.css";
 
-class Task extends React.Component {
+export default class TaskComponent extends React.Component {
   constructor(props) {
     super(props);
     this.handleDivClick = this.handleDivClick.bind(this);
@@ -25,5 +25,3 @@ class Task extends React.Component {
     );
   }
 }
-
-export default Task;

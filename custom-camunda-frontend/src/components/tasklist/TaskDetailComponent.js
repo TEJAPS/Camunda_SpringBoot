@@ -3,7 +3,7 @@ import TaskDetailMenuComponent from "./taskDetailMenu/TaskDetailMenuComponent";
 import DiagramMenuContentComponent from "./taskDetailMenu/DiagramMenuContentComponent";
 import TaskDetailMenuContentComponent from "./taskDetailMenu/TaskDetailMenuContentComponent";
 
-export default class TaskDetail extends Component {
+export default class TaskDetailComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,7 +23,11 @@ export default class TaskDetail extends Component {
     }
 
     if (prevState.activeTaskId !== this.state.activeTaskId) {
-      fetch("http://127.0.0.1:8085/engine-rest/task/" + this.props.activeTaskId)
+      fetch(
+        process.env.REACT_APP_CAMUNDA_ENGINE_BASE_URL +
+          "task/" +
+          this.props.activeTaskId
+      )
         .then((res) => res.json())
         .then(
           (result) => {
@@ -49,7 +53,7 @@ export default class TaskDetail extends Component {
   render() {
     return (
       <div class="taskdetail">
-        <p class="boxbottomborder">Task Detail</p>
+        <p class="boxbottomborder textaligncenter">Task Detail</p>
         {this.state.activeTaskId != null && (
           <div class="taskdetailcontent">
             <div>{this.state.taskDetail.name}</div>

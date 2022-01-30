@@ -14,16 +14,6 @@ export default class DiagramMenuContentComponent extends Component {
     this.fetchData = this.fetchData.bind(this);
   }
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   if (
-  //     // nextProps.processDefinitionId !== this.props.processDefinitionId ||
-  //     nextProps.activeTaskId !== this.props.activeTaskId
-  //   ) {
-  //     return true;
-  //   }
-  //   return false;
-  // }
-
   componentDidUpdate(prevProps) {
     console.log(
       "componentDidUpdate DiagramMenuContentComponent",
@@ -46,7 +36,8 @@ export default class DiagramMenuContentComponent extends Component {
     container.innerHTML = "";
     axios
       .get(
-        "http://127.0.0.1:8085/engine-rest/process-definition/" +
+        process.env.REACT_APP_CAMUNDA_ENGINE_BASE_URL +
+          "process-definition/" +
           this.props.processDefinitionId +
           "/xml"
       )
