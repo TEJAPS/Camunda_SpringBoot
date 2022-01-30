@@ -58,3 +58,14 @@ Step 10: Do clean install, then run the client application and the camunda engin
 Step 11: Test the functionality by hitting /client/start api of client and verify the instance is created in camunda engine for testCaseSample workflow<br/>
 
 -----------------------------------------------------------------------------------
+
+### Steps to use camunda frontend
+
+Step 1: Have your camunda engine running or start this camunda engine <br/>
+Step 2: update the url of camunda engine in the .env.development if you are running your own camunda-engine, if you are starting camunda engine of this repo only then proceed with default content of configuration file<br/>
+Step 3: go to custom camunda frontend and run commands: npm install && npm start<br/>
+Since all are running now<br/>
+Step 4: In Camunda Engine Application try starting any workflow<br/>
+Step 5: Verify if content gets populated in the React application<br/>
+
+-----------------------------------------------------------------------------------

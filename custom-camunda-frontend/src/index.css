@@ -1,0 +1,282 @@
+html{
+  width: 100vw;;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'IBM Plex Sans','IBMPlexSans','open_sansregular',Helvetica,Arial,Verdana,sans-serif;
+  /* overflow-y: hidden; */
+}
+
+#root{
+  min-height: 100vh;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+a{
+  text-decoration: none;
+}
+.whitebg {
+  background-color: #ffffff;
+}
+
+.displayflex {
+  display: flex;
+}
+
+.flexdirectioncol {
+  flex-direction: column;
+}
+
+.margin4vh {
+  margin: 4vh;
+}
+
+.margin2vh {
+  margin: 2vh;
+}
+
+.padding4vh {
+  padding: 4vh;
+}
+
+.flexgrow1 {
+  flex-grow: 1;
+}
+
+.flexgrow2 {
+  flex-grow: 2;
+}
+
+.bottomborderstyle1 {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+h3 {
+  line-height: 1.4;
+}
+
+.alignselfcenter {
+  align-self: center;
+}
+
+.margin0 {
+  margin: 0;
+}
+
+
+header{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  border-top: red 3px solid;
+  box-shadow: 0 2px 10px -4px #555;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  color:#777;
+  background-color: #fff;
+}
+header>ul{
+  margin: 0;
+  padding: 0px 2vh;
+}
+.boxbottomborder{
+  box-shadow: 0px 2px 6px -4px #555;
+  padding: 8px 0px 8px 0px;
+  margin: 0;
+}
+
+li{
+  list-style: none;
+  padding: 4px;
+}
+
+header>ul#headerleft{
+  display: inline-flex;
+}
+header>ul#headerright {
+  display: inline-flex;
+}
+
+.taskfegroup{
+  display: flex;
+}
+.filter {
+  flex-grow: 0.5;
+}
+.tasklistdetail{
+  display: flex;
+  flex-grow: 5;
+}
+.tasklistgroup{
+  flex-grow: 1;
+}
+.tasklistheader{
+  clear: both;
+}
+.tasklist {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  box-shadow: 0 2px 10px -4px #555;
+  min-height: 100vh;
+}
+.task{
+padding: 12px;
+margin: 10px;
+display: flex;
+justify-content: space-between;
+cursor:pointer;
+border-left: 2px #ad192d solid;
+}
+
+.activetask {
+  border: 2px solid red;
+}
+
+.task:hover{
+border-left: 2px blue solid;
+/* box-shadow: #000000 5px 2px; */
+}
+
+.taskinfo{
+text-align: left;
+}
+.taskpriority{
+text-align: right;
+align-self: end;
+}
+
+.taskdetail {
+  flex-grow: 2;
+  display: flex;
+  flex-direction: column;
+}
+.taskdetailcontent{
+display: grid;
+grid-row-gap:2px;
+padding: 14px;
+}
+.taskdetailcontent>div{
+  font-size: 1.2em;
+  padding: 2px;
+  text-align: left;
+}
+.taskdetailcontent>div>ul{
+  display: flex;  
+  justify-content: space-between;
+  padding:0;
+}
+.taskdetailcontent>div>ul>li {
+  display: inline-flex;
+  padding:1px;
+}
+.taskDetailMenuComponent{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.taskDetailMenuComponent>span{
+  padding: 5px;
+  text-transform: capitalize;
+}
+.activespan{
+  border-bottom: 2px solid red;
+}
+.taskDetailMenuComponent>span:hover  {
+border-bottom: blue 2px solid;
+}
+.tasldetailmenucontentcomponent{
+height: 80vh;
+}
+
+footer{
+  display: flex;
+  background-color: black;
+  color:white;
+  justify-content: space-between;
+  padding:0;
+  margin:0;
+  position: absolute;
+  top: auto;
+  border-top: 1px solid rgb(231, 228, 228);
+min-width: 100vw;
+}
+footer>p{
+  margin: 1vh 2vh;
+}
+#modellercontainer{
+border: 1px solid #000000;
+width: "50vw";
+flex-wrap: wrap;
+}
+
+
+/* CSS for homepage */
+.homepage{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #e5e5e5;
+}
+
+.homepagecontent{
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+}
+
+.textaligncenter{
+  text-align: center;
+}
+
+.homepageapplicationcontent{
+  display: flex;
+  justify-content: space-around;
+}
+.homepageapplicationlinksection{
+  display: flex;
+  flex-direction: column;
+}
+
+.homepagelinksection{
+  display: flex;
+  flex-direction: column;
+}
+.blackcircle {
+  list-style: black circle;
+}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 0px 8px;
+  z-index: 1;
+  right: 0;
+}
+
+.dropdown:hover .dropdown-content {
+  display: flex;
+}
+header>ul>li{
+  align-self: center;
+}

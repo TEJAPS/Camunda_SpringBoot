@@ -1,5 +1,6 @@
 package com.dpoint.tutorial.controller;
 
+import camundajar.impl.com.google.gson.Gson;
 import com.dpoint.tutorial.delegates.CompleteProcessFromJava;
 import com.dpoint.tutorial.dto.TestCaseSampleDto;
 import com.dpoint.tutorial.model.NativeJsonDemoRequestDto;
@@ -7,10 +8,13 @@ import com.dpoint.tutorial.model.Person;
 import com.dpoint.tutorial.model.Summers;
 import com.dpoint.tutorial.service.CamundaStartService;
 import com.dpoint.tutorial.service.FormatCamundaRequestsService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import org.camunda.bpm.engine.ProcessEngine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin
 public class SampleController {
 
     @Autowired
@@ -21,6 +25,9 @@ public class SampleController {
 
     @Autowired
     FormatCamundaRequestsService camundaRequestsService;
+
+    @Autowired
+    ProcessEngine processEngine;
 
     @RequestMapping("/get")
     public String index() {
@@ -55,5 +62,11 @@ public class SampleController {
     @RequestMapping(method = RequestMethod.POST, path = "/demonativejson")
     public void demoNativeJson(@RequestBody NativeJsonDemoRequestDto nativeJsonDemoRequestDto) {
         camundaRequestsService.callNativeJsonDemoSample(nativeJsonDemoRequestDto);
+    }
+
+    @GetMapping("/tasks")
+    public String getTask() throws JsonProcessingException {
+        Gson gson = new Gson();
+        return gson.toJson(processEngine.getTaskService().createTaskQuery().active().list());
     }
 }
